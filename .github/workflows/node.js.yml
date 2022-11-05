@@ -28,6 +28,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        cache-dependency-path: client/package-lock.json
         working-directory: Client
     - run: npm ci
       working-directory: Client
