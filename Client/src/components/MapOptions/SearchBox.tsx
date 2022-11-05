@@ -7,9 +7,12 @@ import usePlacesAutocomplete, {getGeocode, getLatLng} from 'use-places-autocompl
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from '@reach/combobox';
 import "@reach/combobox/styles.css"
 
-const SearchBox = () => {
+interface SearchBoxProps {
+    panningFunction: ({lat, lng}: any) => void
+}
+
+const SearchBox = ({panningFunction}: SearchBoxProps) => {
     
-    //const [value, setState] = useState('');
     const [popularThemes, setThemes] = useState([
         {
             name: 'School-life',
@@ -29,6 +32,7 @@ const SearchBox = () => {
         requestOptions: {
             location: { lng: () => -73.567253, lat: () => 45.501690} as google.maps.LatLng,
             radius: 200*1000,
+            //types: ['address'],
         },
     });
 
@@ -39,6 +43,7 @@ const SearchBox = () => {
         return 
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const getPopularThemes = () => {
         //Insérer une requête au serveur pour aller trouver les themes les plus populaires dans une zone
        setThemes([{
@@ -57,11 +62,25 @@ const SearchBox = () => {
   return (
     <div className='search-box'>
         <div className='search-input-section' onSelect={(location) => console.log(location)}>
-            {/* <input className='search-input'  value={value} onChange={(event) => {setValue(event.target.value)}} disabled={!ready}  placeholder='Search by city, country or theme' maxLength={30}></input> */}
-            <Combobox onSelect={(location) => console.log(location)} className='search-input'>
+            <Combobox 
+                onSelect={async (location) => {
+                    setValue(location, false);
+                    clearSuggestions();
+                    try {
+                        const res = await getGeocode({address: location});
+                        const {lat, lng} = await getLatLng(res[0]);
+                        panningFunction({lat, lng});
+                    } catch(error) {
+                        console.log('Location input error');
+                    }
+                }} 
+                className='search-input'
+            >
                 <ComboboxInput className='search-input' value={value} onChange={(event) => {setValue(event.target.value)}} disabled={!ready} placeholder='Search by city, country or theme'/>
-                <ComboboxPopover>
-                    {status === 'OK' && data.map(({place_id, description}) => (<ComboboxOption key={place_id} value={description} />))}
+                <ComboboxPopover style={{fontSize: 'large'}}>
+                    <ComboboxList  style={{width: '100%', maxHeight: '200px',display:'flex', flexDirection:'column' ,justifyContent:'space-evenly', backgroundColor: 'rgba(217, 217, 217, 0.4)'}}>
+                        {status === 'OK' && data.map(({place_id, description}) => (<ComboboxOption key={place_id} value={description} />))}
+                    </ComboboxList>
                 </ComboboxPopover>
             </Combobox>
             <i><FaSearch size={25} color={'#CCCCCC'}/></i>

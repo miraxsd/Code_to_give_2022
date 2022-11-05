@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import './App.scss';
 import NavBar from './components/NavBar/NavBar';
 import Background from './components/Background/Background';
@@ -6,17 +6,28 @@ import Map from './components/Background/Map';
 import SearchBox from './components/MapOptions/SearchBox';
 import TopPosts from './components/MapOptions/TopPosts';
 import {useLoadScript } from '@react-google-maps/api'
+import Locate from './components/MapOptions/Locate';
 
 
 const libraries: ('places')[] = ['places'];
 
 function App() {
 
-  //const [loading] = useGoogleMapsApi({ library: "places" });
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY!,
     libraries,
   })
+
+  const mapReference = useRef<google.maps.Map>();
+  const onMapLoad = useCallback((map: google.maps.Map) => {
+      mapReference.current = map;
+  }, []);
+
+  const panTo = useCallback(({lat, lng}: any) => {
+      mapReference.current?.panTo({lat, lng});
+      mapReference.current?.setZoom(14);
+
+  }, []);
 
   if(!isLoaded) return (<div>Loading</div>);
   if(loadError) return (<div>Error loading the map</div>);
@@ -29,9 +40,9 @@ function App() {
       <div className='app-body'>
         <Background>
           <section>
-            <Map />
-            {/* <div style={{width: '200px', height: '200px', position: 'absolute'}}>nddd</div> */}
-            <SearchBox />
+            <Map mapLoad={onMapLoad}/>
+            <SearchBox panningFunction={panTo} />
+            <Locate panningFunction={panTo} />
             <TopPosts />
           </section>
         </Background>

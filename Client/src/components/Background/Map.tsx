@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Background/Map.scss'
 import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api'
 import { filter } from './MapStyle';
@@ -18,7 +18,11 @@ const infoWindowOps ={
 
 let marker = require('../../assets/map-marker.png');
 
-const Map = () => {
+interface MapProps {
+    mapLoad: (map: google.maps.Map) => void | Promise<void>
+}
+
+const Map = ({mapLoad}: MapProps) => {
 
     const [position, setPosition] = useState({lng: -73.567253, lat: 45.501690});
 
@@ -26,11 +30,11 @@ const Map = () => {
         navigator.geolocation.getCurrentPosition((pos)=>{
             setPosition({lng: pos.coords.longitude, lat: pos.coords.latitude});
         })
-        console.log(position, process.env.REACT_APP_GOOGLE_MAPS_API_KEY!)
+        //console.log(position, process.env.REACT_APP_GOOGLE_MAPS_API_KEY!)
     },[])
 
     useEffect(()=>{
-        console.log(position);
+        //console.log(position);
     }, [position])
 
     const [posts, setPosts] = useState([
@@ -48,10 +52,7 @@ const Map = () => {
         setPosts(current => [...current, {position: {lng: -73.567253, lat: 45.501690}, id: Date.now() + Math.random()*100}]);
     }
 
-    const mapReference = useRef();
-    const onMapLoad = useCallback((map: any) => {
-        mapReference.current = map;
-    }, []);
+   
 
   return (
     <div className='map'>
@@ -60,7 +61,7 @@ const Map = () => {
             zoom={12} 
             center={position} 
             options={ops} 
-            onLoad={onMapLoad} 
+            onLoad={mapLoad} 
             onCenterChanged={()=>updatePost()}
         >
             {
