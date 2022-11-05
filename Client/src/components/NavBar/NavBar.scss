@@ -1,0 +1,59 @@
+.nav-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+
+    .logo-section{
+        margin-left: 5%;
+        width: 180px;
+        height: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+
+        img{
+            min-width: 100%;
+            max-height: 150%;
+            align-self: center;
+            flex-shrink: 0;
+            background-color: rgb(241, 242, 243);
+        }
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    .account-section{
+        margin-right: 5%;
+        width: 120px;
+        height: 60%;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: rgb(204, 205, 206);
+
+        img{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgb(241, 242, 243);
+        }
+
+        &:hover{
+            background-color: rgb(222, 223, 224);
+            cursor: pointer;
+        }
+
+        &:active{
+            background-color: rgb(156, 156, 156);
+            cursor: pointer;
+        }
+    }
+}
