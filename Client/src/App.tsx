@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import Background from './components/Background/Background';
 import Map from './components/Background/Map';
 import SearchBox from './components/MapOptions/SearchBox';
+import TopPosts from './components/MapOptions/TopPosts';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Map />
             {/* <div style={{width: '200px', height: '200px', position: 'absolute'}}>nddd</div> */}
             <SearchBox />
+            <TopPosts />
           </section>
         </Background>
       </div>

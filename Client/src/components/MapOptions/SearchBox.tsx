@@ -10,15 +10,15 @@ const SearchBox = () => {
     const [popularThemes, setThemes] = useState([
         {
             name: 'School-life',
-            icon: 'BsBook'
+            icon: BsBook
         },
         {
             name: 'Friendships',
-            icon: 'BsBook'
+            icon: BsBook
         },
         {
             name: 'Climate',
-            icon: 'BsBook'
+            icon: BsBook
         }
     ])
 
@@ -30,7 +30,7 @@ const SearchBox = () => {
         //Insérer une requête au serveur pour aller trouver les themes les plus populaires dans une zone
        setThemes([{
         name: 'School-life',
-        icon: 'BsBook'
+        icon: BsBook
         }]);
     }
 
