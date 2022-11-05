@@ -3,6 +3,7 @@ import './App.scss';
 import NavBar from './components/NavBar/NavBar';
 import Background from './components/Background/Background';
 import Map from './components/Background/Map';
+import SearchBox from './components/MapOptions/SearchBox';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <section>
             <Map />
             {/* <div style={{width: '200px', height: '200px', position: 'absolute'}}>nddd</div> */}
+            <SearchBox />
           </section>
         </Background>
       </div>

@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import '../Background/Map.scss'
 import { GoogleMap, Marker, InfoWindow, useLoadScript } from '@react-google-maps/api'
+import { filter } from './MapStyle';
 
 
 const libraries: ('places')[] = ['places'];
 const style = {with: "100vw", height: '90vh'};
+const ops = {
+    styles: filter,
+    disableDefaultUI: true,
+    zoomControl: true,
+    fullscreenControl: true,
+    maxZoom: 16
+}
 
 const Map = () => {
 
@@ -29,7 +37,7 @@ const Map = () => {
 
   return (
     <div className='map'>
-        <GoogleMap mapContainerStyle={style} zoom={8} center={position}></GoogleMap>
+        <GoogleMap mapContainerStyle={style} zoom={12} center={position} options={ops}></GoogleMap>
     </div>
   )
 }
