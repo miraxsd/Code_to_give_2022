@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import '../Background/Map.scss'
-import { GoogleMap, Marker, InfoWindow, useLoadScript } from '@react-google-maps/api'
+import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api'
 import { filter } from './MapStyle';
 
 
-const libraries: ('places')[] = ['places'];
 const style = {with: "100vw", height: '90vh'};
 const ops = {
     styles: filter,
@@ -20,11 +19,6 @@ const infoWindowOps ={
 let marker = require('../../assets/map-marker.png');
 
 const Map = () => {
-
-    const {isLoaded, loadError} = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY!,
-        libraries,
-    })
 
     const [position, setPosition] = useState({lng: -73.567253, lat: 45.501690});
 
@@ -58,10 +52,6 @@ const Map = () => {
     const onMapLoad = useCallback((map: any) => {
         mapReference.current = map;
     }, []);
-
-    if(!isLoaded) return (<div>Loading</div>);
-    if(loadError) return (<div>Error loading the map</div>);
-    
 
   return (
     <div className='map'>

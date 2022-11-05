@@ -3,10 +3,13 @@ import '../MapOptions/SearchBox.scss'
 import { FaSearch } from 'react-icons/fa'
 import Theme from '../Tags/Theme';
 import { BsBook } from 'react-icons/bs';
+import usePlacesAutocomplete, {getGeocode, getLatLng} from 'use-places-autocomplete';
+import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from '@reach/combobox';
+import "@reach/combobox/styles.css"
 
 const SearchBox = () => {
     
-    const [value, setState] = useState('');
+    //const [value, setState] = useState('');
     const [popularThemes, setThemes] = useState([
         {
             name: 'School-life',
@@ -20,10 +23,20 @@ const SearchBox = () => {
             name: 'Climate',
             icon: BsBook
         }
-    ])
+    ]);
 
-    const search = (char: string) => {
+    const {ready,value, suggestions: {status, data}, setValue, clearSuggestions, } = usePlacesAutocomplete({
+        requestOptions: {
+            location: { lng: () => -73.567253, lat: () => 45.501690} as google.maps.LatLng,
+            radius: 200*1000,
+        },
+    });
+
+    function search(char: string) {
+       
         console.log(`Typed: ${char}searching`);
+
+        return 
     }
 
     const getPopularThemes = () => {
@@ -40,10 +53,17 @@ const SearchBox = () => {
         }
     },[value]);
 
+
   return (
     <div className='search-box'>
-        <div className='search-input-section'>
-            <input className='search-input' onChange={e => setState(e.target.value)} value={value} placeholder='Search by city, country or theme' maxLength={30}></input>
+        <div className='search-input-section' onSelect={(location) => console.log(location)}>
+            {/* <input className='search-input'  value={value} onChange={(event) => {setValue(event.target.value)}} disabled={!ready}  placeholder='Search by city, country or theme' maxLength={30}></input> */}
+            <Combobox onSelect={(location) => console.log(location)} className='search-input'>
+                <ComboboxInput className='search-input' value={value} onChange={(event) => {setValue(event.target.value)}} disabled={!ready} placeholder='Search by city, country or theme'/>
+                <ComboboxPopover>
+                    {status === 'OK' && data.map(({place_id, description}) => (<ComboboxOption key={place_id} value={description} />))}
+                </ComboboxPopover>
+            </Combobox>
             <i><FaSearch size={25} color={'#CCCCCC'}/></i>
         </div>
         <div className='search-themes-section'>
