@@ -19,11 +19,12 @@
     color: white;
   }
 
-  body{
+  .app-body{
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 90%;
+    width: 100%;
   }
 }
 
