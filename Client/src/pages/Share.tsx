@@ -98,7 +98,7 @@ const Share = () => {
                     step === 1 ? typesForm() : null
                 }
                 {
-                    step === 2 ? contentForm() : null
+                    step === 2 || step === 3 ? contentForm() : null
                 }
             </div>
           </Modal>
