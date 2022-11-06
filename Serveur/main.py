@@ -1,5 +1,5 @@
 
-from flask import Flask, current_app, g, request
+from flask import Flask, current_app, g, request, jsonify
 import bson
 
 import spacy
@@ -22,6 +22,12 @@ def get_posts():
     # get posts from DB
     posts = db.posts.find({'location':location,'etiquettes':etiquettes})
     return posts
+
+@app.route('/api/post/<int:id>',methods = ['GET'])
+def get_post(id):
+    post = db.posts.find_one({'_id'},id)
+    return jsonify(post)
+
 
 @app.route('/api/create_post',methods = ['POST'])
 def create_post():
