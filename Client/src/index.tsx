@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import PostPage from './pages/PostPage';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Share from './pages/Share';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,6 +23,7 @@ root.render(
       </Route>
       <Route path='/login' element={<Login/>}/>
       <Route path='/welcome' element={<Welcome/>}/>
+      <Route path='/share' element={<Share/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path='/postpage' element={<PostPage/>}/>
     

@@ -10,8 +10,8 @@ let cols = 60;
 
 const FullPost = () => {
     return (
-        <div>
-            <div className='post-container'>
+        <div className='Fullpost-container'>
+            <div className='posts-list'>
                 <a className='post-title' href="">{posts[0].title}</a>
                 <p className='post-type'>{posts[0].postType}</p>
                 <p className='post-author'>{posts[0].user}</p>

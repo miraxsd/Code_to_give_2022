@@ -1,10 +1,21 @@
+.Fullpost-container {
+    display: grid;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    align-self: center;
+    height: 275px;
+    width: 435px;
+    max-width: 300;
+    max-height: 200;
+}
+
 .posts-list {
     display: grid;
     grid-template-rows: auto auto 60% auto auto;
     grid-template-columns: 7% 7% 7% 7% 15% auto 20%;
     top: 5%;
-    width: 90%;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     align-content: center;
     border-style: groove;
     border-color: rgba(153, 150, 150, 0.999);
@@ -19,6 +30,7 @@
     margin: 0 auto;
     align-self: start;
     padding-top: 5px;
+    font-weight: bold;
 }
 
 a.post-title {
@@ -62,7 +74,7 @@ a.post-title:hover {
     grid-row: 2 / 3;
     text-align: right;
     margin: 5px auto;
-    color: grey;
+    color: black;
 }
 
 .post-description {
@@ -70,9 +82,10 @@ a.post-title:hover {
     grid-row: 3 / 4;
     background-color: rgb(251, 211, 255);
     border-radius: 10px;
-    padding-top: 5px;
+    padding: 10px;
     overflow: hidden;
     margin: 2px 5px;
+    text-align: justify;
 }
 
 .likeForm {
@@ -83,7 +96,7 @@ a.post-title:hover {
 
 button.post-like {
     border-style: none;
-    background-color: white;
+    background-color: rgb(245, 251, 251);
     font-size: 1.2em;
 }
 
@@ -107,7 +120,7 @@ button.post-like :hover {
 
 button.post-comment {
     border-style: none;
-    background-color: white;
+    background-color: rgb(245, 251, 251);
     font-size: 1.2em;
 }
 

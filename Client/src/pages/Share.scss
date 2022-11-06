@@ -1,0 +1,339 @@
+.types-modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .modal-header{
+        width: 100%;
+        height: 20%;
+
+        .types-modal-button{
+            position: absolute;
+            background: #7951EA;
+            border-radius: 8px;
+            font-size: larger;
+            border: none;
+            color: white;
+            width: 164px;
+            height: 64px;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            top: 5%;
+            right: 5%;
+
+            &:hover{
+                cursor: pointer;
+                background: #512eb3;
+            }
+
+            &:active{
+                cursor: pointer;
+                background: #9f84e9;
+                box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        h1{
+            font-style: normal;
+            font-weight: 600;
+            font-size: 50px;
+            line-height: 68px;
+
+            text-align: center;
+        }
+    }
+
+    .types-modal-content{
+
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+
+        .versus{
+
+            align-self: center;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 82px;
+            text-align: center;
+
+            color: #000000;
+        }
+
+        .types-challenge, .types-issue{
+            width: 489px;
+            height: 680px;
+    
+            background: #F1E8FF;
+            box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+
+            .types-title{
+                font-style: normal;
+                font-weight: 400;
+                font-size: 40px;
+                line-height: 54px;
+                text-align: center;
+            }
+
+            .types-description{
+
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 33px;
+                text-align: center;
+                color: rgba(0, 0, 0, 0.7);
+
+            }
+
+            img{
+                width: 354px;
+                height: 366px;
+            }
+
+            .types-button{
+                background: #3DB0F1;
+                border-radius: 8px;
+                font-size: larger;
+                border: none;
+                color: white;
+                width: 330px;
+                height: 64px;
+                text-align: center;
+                text-decoration: none;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 33px;
+                text-align: center;
+    
+                &:hover{
+                    cursor: pointer;
+                    background: #1582c2;
+                }
+    
+                &:active{
+                    cursor: pointer;
+                    background: #69c3f7;
+                    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+                }
+            }
+        }
+    }
+    
+}
+
+.content-form{
+
+    display: flex;
+    flex-direction: column;
+
+    .content-form-back-button{
+        
+        position: absolute;
+        bottom: 5%;
+        left: 5%;
+    }
+
+    .content-form-share-button{
+
+        position: absolute;
+        bottom: 5%;
+        right: 5%;
+    }
+    .content-form-back-button, .content-form-share-button{
+        background: #3DB0F1;
+        border-radius: 8px;
+        font-size: larger;
+        border: none;
+        color: white;
+        width: 330px;
+        height: 64px;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 33px;
+        text-align: center;
+
+        &:hover{
+            cursor: pointer;
+            background: #1582c2;
+        }
+
+        &:active{
+            cursor: pointer;
+            background: #69c3f7;
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background: #badcf0;
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    .content-form-image{
+
+        position: absolute;
+        top: 2%;
+        left: 2%;
+        width: 219px;
+        height: 201px;
+    }
+
+    h1{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 50px;
+        line-height: 68px;
+        /* identical to box height */
+
+        text-align: center;
+    }
+
+    .form-container{
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        align-self: center;
+        width: 40%;
+
+        .form-label{
+
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 30px;
+            line-height: 41px;
+
+
+            color: #000000;
+        }
+
+        .form-combobox{
+
+            .form-combobox-header{
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 344px;
+                height: 60px;
+
+                background: #F1E8FF;
+                border: 1px solid rgba(0, 0, 0, 0.65);
+                border-radius: 8px;
+
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 33px;
+                color: rgb(53, 53, 53);
+
+                p{
+                    width: 200px;
+                }
+
+                i{
+                    margin-right: 5%;
+                }
+
+                &:hover{
+
+                    cursor: pointer;
+                }
+            }
+
+            .form-combobox-popup {
+
+                position: absolute;
+                width: 344px;
+                background: #F1E8FF;
+                border: 1px solid rgba(0, 0, 0, 0.65);
+                border-top: none;
+                border-radius: 0px  0px 8px 8px;
+
+                .form-combobox-list{
+
+                    max-height: 200px;
+                    overflow-y: auto;
+                    display: flex;
+                    flex-direction: column;
+
+                    .form-combobox-option {
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 40px;
+                        color: rgb(53, 53, 53);
+                        margin: 0px;
+
+                        &:hover{
+                            cursor: pointer;
+                            background: #e0cdff;
+                        }
+                    }
+                }
+            }
+        }
+
+        .form-textarea{
+
+            width: 652px;
+            height: 194px;
+            resize: none;
+
+            background: #F1E8FF;
+            box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 33px;
+            color: rgba(0, 0, 0, 0.65);
+            padding: 2% 0% 0% 2% ;
+        }
+    }
+}
+
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f100;
+
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(177, 177, 177);
+    border-radius: 4px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

@@ -9,7 +9,8 @@ const TopPosts = () => {
     <div className='top-posts'>
      <h1>Top posts in this area</h1>
        <PostItem/>
-    </div>   )
+    </div>
+    )
 }
 
 // const TopPosts = () => {
