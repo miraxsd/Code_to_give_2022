@@ -1,0 +1,132 @@
+.types-modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .modal-header{
+        width: 100%;
+        height: 20%;
+
+        .types-modal-button{
+            position: absolute;
+            background: #7951EA;
+            border-radius: 8px;
+            font-size: larger;
+            border: none;
+            color: white;
+            width: 164px;
+            height: 64px;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            top: 5%;
+            right: 5%;
+
+            &:hover{
+                cursor: pointer;
+                background: #512eb3;
+            }
+
+            &:active{
+                cursor: pointer;
+                background: #9f84e9;
+                box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        h1{
+            font-style: normal;
+            font-weight: 600;
+            font-size: 50px;
+            line-height: 68px;
+
+            text-align: center;
+        }
+    }
+
+    .types-modal-content{
+
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+
+        .versus{
+
+            align-self: center;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 82px;
+            text-align: center;
+
+            color: #000000;
+        }
+
+        .types-challenge, .types-issue{
+            width: 489px;
+            height: 680px;
+    
+            background: #F1E8FF;
+            box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+
+            .types-title{
+                font-style: normal;
+                font-weight: 400;
+                font-size: 40px;
+                line-height: 54px;
+                text-align: center;
+            }
+
+            .types-description{
+
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 33px;
+                text-align: center;
+                color: rgba(0, 0, 0, 0.7);
+
+            }
+
+            img{
+                width: 354px;
+                height: 366px;
+            }
+
+            .types-button{
+                background: #3DB0F1;
+                border-radius: 8px;
+                font-size: larger;
+                border: none;
+                color: white;
+                width: 330px;
+                height: 64px;
+                text-align: center;
+                text-decoration: none;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 33px;
+                text-align: center;
+    
+                &:hover{
+                    cursor: pointer;
+                    background: #1582c2;
+                }
+    
+                &:active{
+                    cursor: pointer;
+                    background: #69c3f7;
+                    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+                }
+            }
+        }
+    }
+    
+}

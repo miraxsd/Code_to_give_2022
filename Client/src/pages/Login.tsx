@@ -8,7 +8,6 @@ const Login = () => {
     <div>
       <header className="App-header">
         <NavBar></NavBar>
-        <Modal></Modal>
       </header>
     </div>
   )
