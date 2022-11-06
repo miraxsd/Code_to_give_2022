@@ -8,7 +8,7 @@ import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption 
 import "@reach/combobox/styles.css"
 
 interface SearchBoxProps {
-    panningFunction: ({lat, lng}: any) => void
+    panningFunction?: ({lat, lng}: any) => void
 }
 
 const SearchBox = ({panningFunction}: SearchBoxProps) => {
@@ -69,7 +69,7 @@ const SearchBox = ({panningFunction}: SearchBoxProps) => {
                     try {
                         const res = await getGeocode({address: location});
                         const {lat, lng} = await getLatLng(res[0]);
-                        panningFunction({lat, lng});
+                        panningFunction?.({lat, lng});
                     } catch(error) {
                         console.log('Location input error');
                     }

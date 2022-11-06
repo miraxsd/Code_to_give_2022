@@ -29,6 +29,29 @@
         }
     }
 
+    .page-options{
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 60vw;
+        height: 100%;
+        align-items: center;
+
+        p{
+            font-style: normal;
+            font-weight: 600;
+            font-size: 30px;
+            line-height: 41px;
+            color: #393939;
+
+            &:hover{
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+
     .account-section{
         margin-right: 5%;
         width: 120px;
