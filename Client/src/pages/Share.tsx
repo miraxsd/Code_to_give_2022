@@ -1,12 +1,11 @@
 import React, { ChangeEvent, useState } from 'react'
-import { FaArrowLeft, FaArrowRight, FaChevronDown, FaDownload } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaChevronDown } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Background from '../components/Background/Background'
 import Modal from '../components/Modal/Modal'
 import NavBar from '../components/NavBar/NavBar'
 import '../pages/Share.scss'
-import Combobox from 'react-widgets/Combobox';
-import { validateHeaderName } from 'http';
+import axios from 'axios';
 
 let map = require('../assets/map-background.jpg');
 let challenge = require('../assets/goal.png');
@@ -56,12 +55,28 @@ const Share = () => {
         const textarea = document.getElementById('form-textarea') as HTMLTextAreaElement;
         let newPost = {
             // a changer
-            location: position,
-            etiquettes: comboboxValue !== 'Select a theme...' ? comboboxValue : '',
-            text: textarea.value
+            location: [position?.lat, position?.lng],
+            etiquettes: [comboboxValue !== 'Select a theme...' ? comboboxValue : ''],
+            text: textarea.value,
+            user: '',
+            postType: step === 2 ? 'Challenge' : 'Idea'
         }
         console.log(newPost)
-        navigate('/', {replace: true})
+        // await axios.post(`${process.env.REACT_APP_SERVER_URL}/createpost`).then(() => {
+        //     navigate('/', {replace: true})
+        // })
+
+        await fetch(`${process.env.REACT_APP_SERVER_URL}/createpost`, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify(newPost)
+
+          }).then(() =>{
+            navigate('/', {replace: true});
+          })
+
+
     }
 
     const typesForm = () => {

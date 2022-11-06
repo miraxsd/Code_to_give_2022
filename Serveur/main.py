@@ -23,7 +23,7 @@ def get_posts():
     posts = db.posts.find({'location':location,'etiquettes':etiquettes})
     return posts
 
-@app.route('/api/create_post',methods = ['POST'])
+@app.route('/api/createpost',methods = ['POST'])
 def create_post():
     # une liste des étiquettes à chercher (une liste vide sinon) 
     new_post = request.get_json()
@@ -37,7 +37,7 @@ def create_post():
     post = {'user':user,'location':location,'etiquettes':total_etiquettes,'postType':postType,'comments':[],'numberOfLikes':0,'text':text}
 
     db.posts.insert_one(post)
-
+    print(post);
     return 'post added'
 
 @app.route('/api/create_comment',methods = ['POST'])

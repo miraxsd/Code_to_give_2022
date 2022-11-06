@@ -40,8 +40,10 @@ const Map = ({mapLoad}: MapProps) => {
 
     const [posts, setPosts] = useState([
         {
-            position: {lng: -73.567253, lat: 45.501690},
-            id: Date.now()+ Math.random()*100
+            id: Date.now()+ Math.random()*100,
+            user: '',
+            location: {lng: -73.567253, lat: 45.501690},
+            numberOfLikes: 0 
         }
     ]);
 
@@ -53,7 +55,13 @@ const Map = ({mapLoad}: MapProps) => {
         await axios.get(`${process.env.REACT_APP_SERVER_URL}/posts`).then((posts: any) => {
             setPosts(current => [...current, posts]);
         }).catch(()=>{
-            setPosts(current => [...current, {position: {lng: -73.567253, lat: 45.501690}, id: Date.now() + Math.random()*100}]);
+            setPosts(current => [...current, {
+                id: Date.now()+ Math.random()*100,
+                user: '',
+                location: {lng: -73.567253, lat: 45.501690},
+                numberOfLikes: 0 
+            
+            }]);
         })
     }
 
@@ -63,6 +71,8 @@ const Map = ({mapLoad}: MapProps) => {
         await axios.get(`${process.env.REACT_APP_SERVER_URL}/post/${id}`).then((posts: any) => {
             setSelectedPost(post)
         }).catch(()=>{
+            console.log(post)
+
             setSelectedPost(post)
         })
     }
@@ -81,9 +91,9 @@ const Map = ({mapLoad}: MapProps) => {
                 posts.map(post => (
                     <Marker 
                         key={post.id.toString()} 
-                        position={{lat: post.position.lat, lng: post.position.lng}} 
+                        position={{lat: post.location.lat, lng: post.location.lng}} 
                         icon={{url: marker, scaledSize: new window.google.maps.Size(50,50)}} 
-                        onClick={async (post) =>getInfos(posts)}
+                        onClick={async () =>getInfos(post)}
                     />
                 ))
             }
@@ -91,13 +101,13 @@ const Map = ({mapLoad}: MapProps) => {
             {  
                 selectedPost ? 
                     <InfoWindow 
-                        position={{lat: selectedPost.position.lat, lng: selectedPost.position.lng}}
+                        position={{lat: selectedPost.location.lat, lng: selectedPost.location.lng}}
                         onCloseClick={()=>{setSelectedPost(null)}}
                         options={infoWindowOps}
                         onLoad={(infoWindow)=>{infoWindow.focus()}}
                     >
                         <div className='post-temp'>
-                                this is a post
+                            this is a post
                         </div>
                     </InfoWindow> 
                 : null
