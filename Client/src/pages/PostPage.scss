@@ -1,0 +1,36 @@
+.PostPage {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100vw;
+    height: 99vh;
+
+    .Post-header {
+        background-color: '#FFFFFF';
+        border-bottom: 1px solid rgb(179, 177, 177);
+        box-shadow: 1px 1px 1px #C3C1C1;
+        max-height: 10%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(10px + 2vmin);
+        color: white;
+      }
+
+      .post-component-container {
+        //display: grid;
+        
+        background-color: gray;
+        width: 400px;
+        height: 500px;
+        margin: auto;
+      }
+
+      .post-container {
+        display: grid;
+        grid-template-columns: 20% 70% auto;
+        background-color: yellow;
+      }
+}

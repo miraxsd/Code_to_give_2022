@@ -1,5 +1,6 @@
 const posts = [
     {
+        id: 0,
         user:  "Bobby123",
         location: [17.966958, -66.123551],
         postType: "Issue",
@@ -19,6 +20,7 @@ const posts = [
         }]
     },
     {
+        id: 1,
         user : "Maria514",
         location: [45.569786, -73.585024],
         postType: "Issue",
@@ -37,6 +39,7 @@ const posts = [
         }]
     },
     {
+        id: 2,
         user : "Coco22",
         location: [34.489809, 69.224768],
         postType: "Issue",
@@ -61,6 +64,7 @@ const posts = [
         }]
     },
     {
+        id: 3,
         user: "JeanPaul87",
         location: [44.250831, -76.514525],
         postType: "Idea",
@@ -85,6 +89,7 @@ const posts = [
         }]
     },
     {
+        id: 4,
         user: "jonathan56",
         location: [45.393278, -71.935539],
         postType: "Issue",
@@ -96,6 +101,7 @@ const posts = [
         comments: []
     },
     {
+        id: 5,
         user : "Leon121",
         location : [45.519017, -73.576269],
         postType: "Idea",
@@ -112,6 +118,7 @@ const posts = [
         }]
     },
     {
+        id: 6,
         user: "Fatima17",
         location: [27.156734, -80.264194],
         postType: "issue",

@@ -5,6 +5,7 @@ import App from './App';
 import Login from './pages/Login';
 import Welcome from './pages/Welcome';
 import Dashboard from './pages/Dashboard';
+import PostPage from './pages/PostPage';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ root.render(
       <Route path='/login' element={<Login/>}/>
       <Route path='/welcome' element={<Welcome/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route path='/postpage' element={<PostPage/>}/>
     
     </Routes>
   </BrowserRouter>

@@ -1,0 +1,138 @@
+.posts-list {
+    display: grid;
+    grid-template-rows: auto auto 60% auto auto;
+    grid-template-columns: 7% 7% 7% 7% 15% auto 20%;
+    top: 5%;
+    width: 90%;
+    height: 200px;
+    align-content: center;
+    border-style: groove;
+    border-color: rgba(153, 150, 150, 0.999);
+    border-width: 2px ;
+    margin: 5px 15px;
+    overflow: hidden;
+}
+
+.post-title {
+    grid-column: 1 / 8;
+    grid-row: 1 / 2;
+    margin: 0 auto;
+    align-self: start;
+    padding-top: 5px;
+}
+
+a.post-title {
+    text-decoration: none;
+    color: black;
+    font-size: 1.4em;
+}
+
+a.post-title:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.post-type {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    margin: 5px auto;
+    justify-self: start;
+}
+
+.post-author {
+    grid-column: 5 / 7;
+    grid-row: 2 / 3;
+    margin: 5px auto;
+    font-weight: bold;
+    justify-self: start;
+}
+
+.profile-picture {
+    grid-column: 4 / 6;
+    grid-row: 2 / 3;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    padding-top: 3px;
+    justify-self: end;
+}
+
+.post-date {
+    grid-column: 7 / 8;
+    grid-row: 2 / 3;
+    text-align: right;
+    margin: 5px auto;
+    color: grey;
+}
+
+.post-description {
+    grid-column: 1 / 8;
+    grid-row: 3 / 4;
+    background-color: rgb(251, 211, 255);
+    border-radius: 10px;
+    padding-top: 5px;
+    overflow: hidden;
+    margin: 2px 5px;
+}
+
+.likeForm {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    margin: 5px;
+}
+
+button.post-like {
+    border-style: none;
+    background-color: white;
+    font-size: 1.2em;
+}
+
+button.post-like :hover {
+    background-color: rgb(236, 139, 139);
+    cursor: pointer;
+}
+
+.likes-number {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    margin: 5px;
+    padding-top: 4px;
+}
+
+.post-comment {
+    grid-column: 3 / 4;
+    grid-row: 4 / 5;
+    margin: 5px;
+}
+
+button.post-comment {
+    border-style: none;
+    background-color: white;
+    font-size: 1.2em;
+}
+
+button.post-comment :hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.post-reply {
+    grid-column: 4 / 5;
+    grid-row: 4 / 5;
+    margin: 5px;
+    padding-top: 4px;
+}
+
+.commentForm {
+    display: none;
+    margin-bottom: 10px;
+}
+
+.cancelButton {
+    border-radius: 10%;
+    margin-right: 5px;
+}
+
+.SubmitButton {
+    border-radius: 10%;
+}
