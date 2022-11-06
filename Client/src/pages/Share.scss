@@ -180,6 +180,12 @@
             background: #69c3f7;
             box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
         }
+
+        &:disabled {
+            cursor: not-allowed;
+            background: #badcf0;
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+        }
     }
 
     .content-form-image{
@@ -221,5 +227,113 @@
 
             color: #000000;
         }
+
+        .form-combobox{
+
+            .form-combobox-header{
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 344px;
+                height: 60px;
+
+                background: #F1E8FF;
+                border: 1px solid rgba(0, 0, 0, 0.65);
+                border-radius: 8px;
+
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 33px;
+                color: rgb(53, 53, 53);
+
+                p{
+                    width: 200px;
+                }
+
+                i{
+                    margin-right: 5%;
+                }
+
+                &:hover{
+
+                    cursor: pointer;
+                }
+            }
+
+            .form-combobox-popup {
+
+                position: absolute;
+                width: 344px;
+                background: #F1E8FF;
+                border: 1px solid rgba(0, 0, 0, 0.65);
+                border-top: none;
+                border-radius: 0px  0px 8px 8px;
+
+                .form-combobox-list{
+
+                    max-height: 200px;
+                    overflow-y: auto;
+                    display: flex;
+                    flex-direction: column;
+
+                    .form-combobox-option {
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 40px;
+                        color: rgb(53, 53, 53);
+                        margin: 0px;
+
+                        &:hover{
+                            cursor: pointer;
+                            background: #e0cdff;
+                        }
+                    }
+                }
+            }
+        }
+
+        .form-textarea{
+
+            width: 652px;
+            height: 194px;
+            resize: none;
+
+            background: #F1E8FF;
+            box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 33px;
+            color: rgba(0, 0, 0, 0.65);
+            padding: 2% 0% 0% 2% ;
+        }
     }
+}
+
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f100;
+
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(177, 177, 177);
+    border-radius: 4px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

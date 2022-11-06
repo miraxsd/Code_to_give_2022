@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
-import { FaArrowLeft, FaArrowRight, FaDownload } from 'react-icons/fa';
+import React, { ChangeEvent, useState } from 'react'
+import { FaArrowLeft, FaArrowRight, FaChevronDown, FaDownload } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Background from '../components/Background/Background'
 import Modal from '../components/Modal/Modal'
 import NavBar from '../components/NavBar/NavBar'
 import '../pages/Share.scss'
 import Combobox from 'react-widgets/Combobox';
+import { validateHeaderName } from 'http';
 
 let map = require('../assets/map-background.jpg');
 let challenge = require('../assets/goal.png');
@@ -15,7 +16,53 @@ const Share = () => {
 
     let navigate = useNavigate();
     const [step, setStep] = useState(1);
-    const [comboboxValue, setComboboxValue] = useState('');
+    const [comboboxValue, setComboboxValue] = useState('Select a theme...');
+    const [comboboxOpened, setComboboxOpen] = useState(false);
+    const [canShare, setCanShare] = useState(false);
+    const [position, setPosition] = useState<{lat: number, lng: number}>()
+
+    navigator.geolocation.getCurrentPosition((pos)=>{
+        setPosition({lat: pos.coords.latitude, lng: pos.coords.longitude});
+    });
+ 
+    const getThemes = () => {
+
+        let themes = ['Select a theme...', 'Climate', 'Friendships', 'School-life', 'Hunger', 'Money'];
+
+        return (
+            <div className='form-combobox-list'>
+                {
+                    themes.map((theme, index) => {
+                        return(
+                            <p key={index} className='form-combobox-option' onClick={() => setComboboxValue(theme)}>{theme}</p>
+                        )
+                    })
+                }
+            </div>
+        )
+    }
+
+    const verify = (event: ChangeEvent) => {
+
+        console.log((event.target as HTMLTextAreaElement).value);
+        if((event.target as HTMLTextAreaElement).value !== '') {
+            setCanShare(true);
+        } else {
+            setCanShare(false);
+        }
+    }
+
+    const shareNewPost = async () => {
+        const textarea = document.getElementById('form-textarea') as HTMLTextAreaElement;
+        let newPost = {
+            // a changer
+            location: position,
+            etiquettes: comboboxValue !== 'Select a theme...' ? comboboxValue : '',
+            text: textarea.value
+        }
+        console.log(newPost)
+        navigate('/', {replace: true})
+    }
 
     const typesForm = () => {
 
@@ -34,8 +81,8 @@ const Share = () => {
                 </div>
                 <p className='versus'>VS</p>
                 <div className='types-issue'>
-                    <p className='types-title'>Issue</p>
-                    <p className='types-description'>Share a current issue you’re facing to start a discussion.</p>
+                    <p className='types-title'>Idea</p>
+                    <p className='types-description'>Share a current idea you have to start a discussion.</p>
                     <img src={issue} alt=''/>
                     <button className='types-button' onClick={()=> setStep(3)}>Select this option</button>
                 </div>
@@ -49,33 +96,36 @@ const Share = () => {
         return (
             <div className='content-form'>
                 <button className='content-form-back-button' onClick={()=> setStep(1)}> <FaArrowLeft size={40}/> Previous </button>
-                <button className='content-form-share-button' onClick={()=> navigate('/', {replace: true})}> Share</button>
+                <button className='content-form-share-button' disabled={!canShare} onClick={async ()=> shareNewPost()}> Share</button>
                 <img className='content-form-image' src={step === 2 ? challenge : step === 3 ? issue : ''} alt='' />
                 <h1>
                     {
                         step === 2 ? 'What is your challenge ?' : null
                     }
                     {
-                        step === 3 ? 'What is your issue ?': null
+                        step === 3 ? 'What is your idea ?': null
                     }
                 </h1>
                 <div className='form-container'>
                     <p className='form-label'>Select a theme :</p>
-                    <Combobox
-                        defaultValue='Select a theme'
-                        onSelect={(value)=> setComboboxValue(value)}
-                        data={['Climate', 'Poverty', 'Hunger', 'School']}
-                        className='content-form-combobox-input'
-                    />
-
-                    <p className='form-label'>Describe your challenge :</p>
-                    <textarea className='form-textarea' placeholder='Type your message in this box.'  maxLength={512}/>
-
-                    <p className='form-label'>Add a picture or a video :</p>
-                    <div>
-                        <button > <FaDownload size={40}/></button>
+                    <div className='form-combobox' onClick={() => setComboboxOpen(!comboboxOpened)}>
+                        <div className='form-combobox-header'>
+                            <p>{comboboxValue}</p>
+                            <i><FaChevronDown /></i>
+                        </div>
+                        {
+                            comboboxOpened ? 
+                            <div className='form-combobox-popup'>
+                                {
+                                    getThemes()
+                                }
+                            </div>
+                            : null
+                        }
                     </div>
 
+                    <p className='form-label'>Describe your challenge :</p>
+                    <textarea id='form-textarea' className='form-textarea' onChange={(event) => verify(event)} placeholder='Type your message in this box.'  maxLength={512}/>
                 </div>
             </div>
         )

@@ -7,6 +7,8 @@ import SearchBox from './components/MapOptions/SearchBox';
 import TopPosts from './components/MapOptions/TopPosts';
 import {useLoadScript } from '@react-google-maps/api'
 import Locate from './components/MapOptions/Locate';
+import { MdOutlinePostAdd } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 
 const libraries: ('places')[] = ['places'];
@@ -29,6 +31,8 @@ function App() {
 
   }, []);
 
+  let navigate = useNavigate();
+
   if(!isLoaded) return (<div>Loading</div>);
   if(loadError) return (<div>Error loading the map</div>);
 
@@ -44,6 +48,7 @@ function App() {
             <SearchBox panningFunction={panTo} />
             <Locate panningFunction={panTo} />
             <TopPosts />
+            <button className='create-new-post' onClick={() => navigate('/share', {replace: true})}> <MdOutlinePostAdd size={40} color='white'/></button>
           </section>
         </Background>
       </div>
