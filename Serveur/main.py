@@ -22,7 +22,7 @@ def get_posts():
     etiquettes = requested_posts_spec.get('etiquettes')
     # get posts from DB
     posts = db.posts.find({'location':location,'etiquettes':etiquettes})
-    return posts
+    return json.loads(json_util.dumps(posts))
 
 @app.route('/api/post/<string:id>',methods = ['GET'])
 def get_post(id):
@@ -45,7 +45,6 @@ def create_post():
     post = {'user':user,'location':location,'etiquettes':total_etiquettes,'postType':postType,'comments':[],'numberOfLikes':0,'text':text}
 
     db.posts.insert_one(post)
-    print(post);
     return 'post added'
 
 @app.route('/api/create_comment',methods = ['POST'])
