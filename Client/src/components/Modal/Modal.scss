@@ -17,8 +17,8 @@
   }
   
   .modal {
-    width: 250px;
-    height: 170px;
+    width:  60vw;
+    height: 70vh;
     background: white;
     color: white;
     z-index: 10;
@@ -27,7 +27,7 @@
   }
   
   .modalHeader {
-    height: 50px;
+    height: 6rem;
     background: white;
     overflow: hidden;
     border-top-left-radius: 16px;
@@ -35,19 +35,32 @@
   }
   
   .heading {
-    margin: 0;
+    margin: 2rem;
     padding: 10px;
     color: #2c3e50;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 30px;
     text-align: center;
   }
   
   .modalContent {
-    padding: 10px;
-    font-size: 14px;
+    padding: 0 12rem;
+    font-size: 18px;
+    line-height: 33px;
+    text-align: center;
     color: #2c3e50;
     text-align: center;
+  }
+
+  .button4 {
+    position: absolute;
+    font-size: 18px;
+    border-radius: 12px;
+    border-color: #3DB0F1;
+    background-color: #3DB0F1;
+    color: #FFFFFF;
+    padding: 1rem;
+    border-style: none;
   }
   
   .modalActions {
