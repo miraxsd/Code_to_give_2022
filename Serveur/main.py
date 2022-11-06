@@ -1,9 +1,10 @@
 
 from flask import Flask, current_app, g, request, jsonify
-import bson
-
+from bson.objectid import ObjectId
+from bson import json_util
 import spacy
 import pymongo
+import json
 
 app = Flask(__name__)
 
@@ -23,10 +24,11 @@ def get_posts():
     posts = db.posts.find({'location':location,'etiquettes':etiquettes})
     return posts
 
-@app.route('/api/post/<int:id>',methods = ['GET'])
+@app.route('/api/post/<string:id>',methods = ['GET'])
 def get_post(id):
-    post = db.posts.find_one({'_id'},id)
-    return jsonify(post)
+    print(id,flush=True)
+    post = db.posts.find_one({'_id': ObjectId(id)})
+    return json.loads(json_util.dumps(post))
 
 
 @app.route('/api/createpost',methods = ['POST'])
