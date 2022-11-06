@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../Background/Map.scss'
 import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api'
 import { filter } from './MapStyle';
+import axios from 'axios';
 
 
 const style = {with: "100vw", height: '90vh'};
@@ -46,13 +47,25 @@ const Map = ({mapLoad}: MapProps) => {
 
     const [selectedPost, setSelectedPost] = useState<any>(null);
 
-    const updatePost = () =>{
+    const updatePost = async () =>{
         //Insérer fonction qui va aller get les posts de cette région de la map
         // ex: getPosts(position) 
-        setPosts(current => [...current, {position: {lng: -73.567253, lat: 45.501690}, id: Date.now() + Math.random()*100}]);
+        await axios.get(`${process.env.REACT_APP_SERVER_URL}/posts`).then((posts: any) => {
+            setPosts(current => [...current, posts]);
+        }).catch(()=>{
+            setPosts(current => [...current, {position: {lng: -73.567253, lat: 45.501690}, id: Date.now() + Math.random()*100}]);
+        })
     }
 
-   
+    const getInfos = async (post: any) => {
+        let id = post.id; 
+
+        await axios.get(`${process.env.REACT_APP_SERVER_URL}/post/${id}`).then((posts: any) => {
+            setSelectedPost(post)
+        }).catch(()=>{
+            setSelectedPost(post)
+        })
+    }
 
   return (
     <div className='map'>
@@ -70,7 +83,7 @@ const Map = ({mapLoad}: MapProps) => {
                         key={post.id.toString()} 
                         position={{lat: post.position.lat, lng: post.position.lng}} 
                         icon={{url: marker, scaledSize: new window.google.maps.Size(50,50)}} 
-                        onClick={()=>setSelectedPost(post)}
+                        onClick={async (post) =>getInfos(posts)}
                     />
                 ))
             }
