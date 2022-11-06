@@ -129,4 +129,18 @@
         margin: 5px;
         padding-top: 4px;
     }
+
+    .comment {
+        display: none;
+        margin-bottom: 10px;
+    }
+
+    .cancelButton {
+        border-radius: 10%;
+        margin-right: 5px;
+    }
+
+    .SubmitButton {
+        border-radius: 10%;
+    }
 }
