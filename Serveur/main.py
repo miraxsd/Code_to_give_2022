@@ -129,6 +129,16 @@ def unlike_comment():
 
     return 'likes_number'
 
+@app.route('/api/top_topics',methods = ['GET'])
+def get_top_topics():
+    top_topics = db.posts.aggregate([
+    {"$unwind" : "$etiquettes"},
+    {"$sortByCount" : "$etiquettes"},
+    {"$limit" : 3}
+    ]).pretty()
+    return json.loads(json_util.dumps(top_topics))
+
+
 @app.route('/api/test',methods = ['GET'])
 def test():
     post_id = request.get_json('id')
