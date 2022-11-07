@@ -42,7 +42,7 @@ def get_posts():
                     { '$geometry' : 
                         {
                         'type':"centerSphere", 
-                        'coordinates':[[location,10]]
+                        'coordinates':[location,10]
                         }
                     } 
                 },
