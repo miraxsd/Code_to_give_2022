@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8c742bc-005f-4fe7-bb0c-23dac7ba62bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Client/src/components/MapOptions/SearchBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/MapOptions/SearchBox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/pages/Dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/Dashboard.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/pages/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/pages/PostPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/PostPage.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/pages/Share.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/Share.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/pages/Share.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/Share.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Serveur.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Serveur.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +42,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.Serveur">
+  <component name="RunManager" selected="Flask server.Serveur">
     <configuration name="Serveur" type="PythonConfigurationType" factoryName="Python">
       <module name="Serveur" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -98,6 +91,7 @@
       <updated>1667780341634</updated>
       <workItem from="1667780343762" duration="13979000" />
       <workItem from="1667848529633" duration="747000" />
+      <workItem from="1667849285742" duration="4402000" />
     </task>
     <servers />
   </component>
@@ -114,5 +108,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Serveur$Serveur.coverage" NAME="Serveur Coverage Results" MODIFIED="1667855443142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

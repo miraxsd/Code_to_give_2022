@@ -16,7 +16,7 @@ const ops = {
     maxZoom: 16
 }
 const infoWindowOps ={
-    minWidth: 1200
+    minWidth: 600
 }
 
 let marker = require('../../assets/map-marker.png');
@@ -95,7 +95,7 @@ const Map = ({mapLoad, mapRef}: MapProps) => {
     const getInfos = async (post: any) => {
         let id = post.id; 
 
-        await axios.get(`api/post/${id}`).then((posts: any) => {
+        await axios.get(`/api/post/${id}`).then((posts: any) => {
             console.log(posts.data)
             setSelectedPost({
                 id: posts.data._id.$oid,
