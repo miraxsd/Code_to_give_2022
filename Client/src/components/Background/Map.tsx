@@ -52,9 +52,19 @@ const Map = ({mapLoad}: MapProps) => {
     const updatePost = async () =>{
         //Insérer fonction qui va aller get les posts de cette région de la map
         // ex: getPosts(position) 
-        await axios.get(`${process.env.REACT_APP_SERVER_URL}/posts`).then((posts: any) => {
-            setPosts(current => [...current, posts]);
-        }).catch(()=>{
+
+        await fetch(`/api/posts`, {
+            method: 'POST',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                location: [-73.567253, 45.501690],
+                etiquette: ['Climate']
+            })
+
+          }).then((response: Response) => response.json()).then((data) => {
+            console.log(data);
+            setPosts(current => [...current, data]);
+          }).catch(()=>{
             setPosts(current => [...current, {
                 id: Date.now()+ Math.random()*100,
                 user: '',
@@ -62,7 +72,7 @@ const Map = ({mapLoad}: MapProps) => {
                 numberOfLikes: 0 
             
             }]);
-        })
+          })
     }
 
     const getInfos = async (post: any) => {
