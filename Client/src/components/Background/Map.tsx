@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { MutableRefObject, useEffect, useState } from 'react'
 import '../Background/Map.scss'
 import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api'
 import { filter } from './MapStyle';
@@ -20,16 +20,18 @@ const infoWindowOps ={
 let marker = require('../../assets/map-marker.png');
 
 interface MapProps {
-    mapLoad: (map: google.maps.Map) => void | Promise<void>
+    mapLoad: (map: google.maps.Map) => void | Promise<void>,
+    mapRef?: MutableRefObject<any>
 }
 
-const Map = ({mapLoad}: MapProps) => {
+const Map = ({mapLoad, mapRef}: MapProps) => {
 
-    const [position, setPosition] = useState({lng: -73.567253, lat: 45.501690});
+    const [position, setPosition] = useState([45.501690, -73.567253]);
+    const [currentZoom, setZoom] = useState(12);
 
     useEffect(()=>{
         navigator.geolocation.getCurrentPosition((pos)=>{
-            setPosition({lng: pos.coords.longitude, lat: pos.coords.latitude});
+            setPosition([pos.coords.latitude, pos.coords.longitude]);
         })
         //console.log(position, process.env.REACT_APP_GOOGLE_MAPS_API_KEY!)
     },[])
@@ -38,11 +40,11 @@ const Map = ({mapLoad}: MapProps) => {
         //console.log(position);
     }, [position])
 
-    const [posts, setPosts] = useState([
+    const [posts, setPosts] = useState<any[]>([
         {
             id: Date.now()+ Math.random()*100,
             user: '',
-            location: {lng: -73.567253, lat: 45.501690},
+            location: [45.501690, -73.567253],
             numberOfLikes: 0 
         }
     ]);
@@ -53,6 +55,8 @@ const Map = ({mapLoad}: MapProps) => {
         //Insérer fonction qui va aller get les posts de cette région de la map
         // ex: getPosts(position) 
 
+        console.log(mapRef?.current?.getZoom());
+
         await fetch(`/api/posts`, {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
@@ -61,14 +65,25 @@ const Map = ({mapLoad}: MapProps) => {
                 etiquette: ['Climate']
             })
 
-          }).then((response: Response) => response.json()).then((data) => {
-            console.log(data);
-            setPosts(current => [...current, data]);
+          }).then((response: Response) => response.json()).then((data: any) => {
+            let list: any[] =  [];
+            data.map((post: any) => 
+                list.push(
+                    {
+                        id: post._id.$oid,
+                        user: post.user,
+                        location: post.location,
+                        numberOfLikes: post.numberOfLikes
+                    }
+                )
+            )
+            console.log('list ', list)
+            setPosts(list);
           }).catch(()=>{
             setPosts(current => [...current, {
                 id: Date.now()+ Math.random()*100,
                 user: '',
-                location: {lng: -73.567253, lat: 45.501690},
+                location: [45.501690, -73.567253],
                 numberOfLikes: 0 
             
             }]);
@@ -87,21 +102,26 @@ const Map = ({mapLoad}: MapProps) => {
         })
     }
 
+
+    useEffect(()=>{
+        updatePost();
+    }, [])
+
   return (
     <div className='map'>
         <GoogleMap 
             mapContainerStyle={style} 
-            zoom={12} 
-            center={position} 
+            zoom={currentZoom} 
+            center={{lat: position[0], lng: position[1]}} 
             options={ops} 
             onLoad={mapLoad} 
-            onCenterChanged={()=>updatePost()}
+            //onCenterChanged={()=>updatePost()}
         >
             {
                 posts.map(post => (
                     <Marker 
-                        key={post.id.toString()} 
-                        position={{lat: post.location.lat, lng: post.location.lng}} 
+                        key={post?.id?.toString()} 
+                        position={{lat: post?.location?.[0], lng: post?.location?.[1]}} 
                         icon={{url: marker, scaledSize: new window.google.maps.Size(50,50)}} 
                         onClick={async () =>getInfos(post)}
                     />
@@ -111,7 +131,7 @@ const Map = ({mapLoad}: MapProps) => {
             {  
                 selectedPost ? 
                     <InfoWindow 
-                        position={{lat: selectedPost.location.lat, lng: selectedPost.location.lng}}
+                        position={{lat: selectedPost.location?.[0], lng: selectedPost.location?.[1]}}
                         onCloseClick={()=>{setSelectedPost(null)}}
                         options={infoWindowOps}
                         onLoad={(infoWindow)=>{infoWindow.focus()}}

@@ -44,7 +44,7 @@ function App() {
       <div className='app-body'>
         <Background>
           <section>
-            <Map mapLoad={onMapLoad}/>
+            <Map mapLoad={onMapLoad} mapRef={mapReference}/>
             <SearchBox panningFunction={panTo} />
             <Locate panningFunction={panTo} />
             <TopPosts />
