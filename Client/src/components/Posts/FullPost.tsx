@@ -15,6 +15,20 @@ const FullPost = ({details}: FullPostProps) => {
         console.log('submiting')
     }
 
+    const handleClick = async () => {
+
+        console.log(details.id);
+
+        await fetch(`/api/like_post`, {
+          method: 'POST',
+          headers: {'Content-type': 'application/json'},
+          body: JSON.stringify(details.id)
+    
+        }).then((response: Response) => response.json()).then((data: any) => {
+        }).catch(()=>{
+        })
+      }
+
     useEffect(() => {
 
     }, [showReply])
@@ -28,7 +42,7 @@ const FullPost = ({details}: FullPostProps) => {
                 </div>
                 <div className='post-actions'>
                    <div className='action'>
-                        <button className='post-like' type='submit'><AiOutlineHeart size={30}/></button>
+                        <button className='post-like' onClick={()=>handleClick()}><AiOutlineHeart size={30}/></button>
                         <p className='likes-number'>{details.numberOfLikes}</p>
                     </div>
                     <div className='action' onClick={() => setShowReply(true)}>

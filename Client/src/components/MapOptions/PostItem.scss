@@ -5,6 +5,9 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    z-index: 999;
+
+
 
     .main-post{
         display: flex;
@@ -36,6 +39,10 @@
             text-align: left;
             padding: 8px;
 
+            &:hover {
+                cursor: pointer;
+            }
+
             p{
                 text-overflow: ellipsis;
             }
@@ -52,7 +59,11 @@
             .action{
                 display: flex;
                 width: fit-content;
+                display: flex;
+                align-items: center;
                 font-size: 18px;
+                gap: 4px;
+
 
                 &:hover{
                     cursor: pointer;

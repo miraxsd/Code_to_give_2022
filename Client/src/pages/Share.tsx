@@ -42,7 +42,6 @@ const Share = () => {
 
     const verify = (event: ChangeEvent) => {
 
-        console.log((event.target as HTMLTextAreaElement).value);
         if((event.target as HTMLTextAreaElement).value !== '') {
             setCanShare(true);
         } else {
@@ -61,10 +60,7 @@ const Share = () => {
             postType: step === 2 ? 'Challenge' : 'Idea'
         }
         console.log(newPost)
-        // await axios.post(`${process.env.REACT_APP_SERVER_URL}/createpost`).then(() => {
-        //     navigate('/', {replace: true})
-        // })
-
+        
         await fetch(`/api/createpost`, {
             method: 'POST',
             headers: {'Content-type': 'application/json'},

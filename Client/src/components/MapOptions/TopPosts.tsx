@@ -23,7 +23,6 @@ const TopPosts = ({mapRef}:TopPostsProps) => {
   }])
 
   eventBus.on('newLocation', (e: any) => {
-    console.log('event', e)
     getPosts(e);
   });
 

@@ -55,7 +55,6 @@ const SearchBox = ({panningFunction}: SearchBoxProps) => {
     }
 
     const handleSelect = (location: any) => {
-        console.log(location);
         eventBus.dispatch('newLocation', location);
     }
 
