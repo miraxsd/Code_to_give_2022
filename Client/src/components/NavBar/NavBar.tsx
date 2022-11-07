@@ -17,6 +17,7 @@ const NavBar = () => {
         </div>
         <div className='page-options'>
             <p onClick={() => navigate('/dashboard', {replace: true})}>My Dashboard</p>
+            <a href='https://digitalmoment.org/'>About us</a>
         </div>
         <div className='account-section' onClick={()=>setState(!accountClicked)}>
             <img src={user} alt='' />
