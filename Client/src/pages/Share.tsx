@@ -5,8 +5,6 @@ import Background from '../components/Background/Background'
 import Modal from '../components/Modal/Modal'
 import NavBar from '../components/NavBar/NavBar'
 import '../pages/Share.scss'
-import Combobox from 'react-widgets/Combobox';
-import { validateHeaderName } from 'http';
 
 let map = require('../assets/map-background.jpg');
 let challenge = require('../assets/goal.png');
@@ -133,29 +131,29 @@ const Share = () => {
 
   return (
     <div className='App welcome-page'>
-    <header className="App-header">
-      <NavBar />
-    </header>
-    <div className='app-body'>
-      <Background >
-        <section>
-          <div className='map-background'>
-            <img className='map-img' src={map} alt='' />
-          </div>
-          <Modal overlay={true} width='1416px' height='888px'>
-            <div>
-                {
-                    step === 1 ? typesForm() : null
-                }
-                {
-                    step === 2 || step === 3 ? contentForm() : null
-                }
-            </div>
-          </Modal>
-        </section>
-      </Background>
+        <header className="App-header">
+        <NavBar />
+        </header>
+        <div className='app-body'>
+            <Background >
+                <section>
+                <div className='map-background'>
+                    <img className='map-img' src={map} alt='' />
+                </div>
+                <Modal overlay={true} width='1416px' height='888px'>
+                    <div>
+                        {
+                            step === 1 ? typesForm() : null
+                        }
+                        {
+                            step === 2 || step === 3 ? contentForm() : null
+                        }
+                    </div>
+                </Modal>
+                </section>
+            </Background>
+        </div>
     </div>
-  </div>
   )
 }
 
