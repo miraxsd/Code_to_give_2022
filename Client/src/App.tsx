@@ -44,11 +44,11 @@ function App() {
       <div className='app-body'>
         <Background>
           <section>
-            <Map mapLoad={onMapLoad}/>
+            <Map mapLoad={onMapLoad} mapRef={mapReference}/>
             <SearchBox panningFunction={panTo} />
             <Locate panningFunction={panTo} />
-            <TopPosts />
-            <button className='create-new-post' onClick={() => navigate('/share', {replace: true})}> <MdOutlinePostAdd size={40} color='white'/></button>
+            <TopPosts mapRef={mapReference} />
+            <button className='create-new-post' onClick={() => navigate('/share', {replace: true})}> <MdOutlinePostAdd size={60} color='white'/></button>
           </section>
         </Background>
       </div>

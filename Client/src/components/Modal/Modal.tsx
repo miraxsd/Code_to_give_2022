@@ -1,5 +1,4 @@
 import React from 'react'
-import { JsxAttribute } from 'typescript';
 import '../Modal/Modal.scss'
 
 interface ModalProps {

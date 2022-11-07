@@ -1,9 +1,10 @@
 
-from flask import Flask, current_app, g, request
-import bson
-
+from flask import Flask, current_app, g, request, jsonify
+from bson.objectid import ObjectId
+from bson import json_util
 import spacy
 import pymongo
+import json
 
 app = Flask(__name__)
 
@@ -20,10 +21,38 @@ def get_posts():
     location = requested_posts_spec.get('location')
     etiquettes = requested_posts_spec.get('etiquettes')
     # get posts from DB
-    posts = db.posts.find({'location':location,'etiquettes':etiquettes})
-    return posts
+    #posts_found = db.posts.find({'location': {"$gt": location[0]},'etiquettes':etiquettes})
+    if etiquettes == [] or type(etiquettes) != list :
+        posts_found = db.posts.find( 
+        { 'location' : 
+            { '$geoWithin' : 
+                    {
+                        "$centerSphere":[location,100]
+                    } 
+            }
+        }).sort('numberOflike',-1)
+    else:
+        posts_found = db.posts.find( 
+            { 'location' : 
+                { '$geoWithin' : 
+                    {
+                        "$centerSphere":[location,100]
+                    } 
+                },
+                'etiquettes':{'$in':etiquettes}
 
-@app.route('/api/create_post',methods = ['POST'])
+            }).sort('numberOflike',-1)
+
+    return json.loads(json_util.dumps(posts_found))
+
+@app.route('/api/post/<string:id>',methods = ['GET'])
+def get_post(id):
+    print(id,flush=True)
+    post = db.posts.find_one({'_id': ObjectId(id)})
+    return json.loads(json_util.dumps(post))
+
+
+@app.route('/api/createpost',methods = ['POST'])
 def create_post():
     # une liste des étiquettes à chercher (une liste vide sinon) 
     new_post = request.get_json()
@@ -37,22 +66,23 @@ def create_post():
     post = {'user':user,'location':location,'etiquettes':total_etiquettes,'postType':postType,'comments':[],'numberOfLikes':0,'text':text}
 
     db.posts.insert_one(post)
-
-    return 'post added'
+    return jsonify('post added')
 
 @app.route('/api/create_comment',methods = ['POST'])
 def create_comment():
     # Peut contenir la longitude et l'altitude (0 sinon), une liste des étiquettes à chercher (une liste vide sinon) 
     comment_infos = request.get_json()
-    post_id = comment_infos.get_json('post_id')
-    comment_writer = comment_infos.get_json('name')
-    comment_text = comment_infos.get_json('text')
-    numberOfLikes =comment_infos.get_json('numberOfLikes')
+    post_id = comment_infos.get('post_id')
+    comment_id = ObjectId()
+    comment_writer = comment_infos.get('name')
+    comment_text = comment_infos.get('text')
+    numberOfLikes =comment_infos.get('numberOfLikes')
 
-    db.posts.update_many({'_id':post_id}, 
+    db.posts.update_many({'_id':ObjectId(post_id)}, 
         {
             '$push':{
                 'comments': {
+                    '_id': ObjectId(comment_id),
                     'user': comment_writer,
                     'comment': comment_text,
                     'numberOfLikes': numberOfLikes
@@ -64,34 +94,58 @@ def create_comment():
     return 'Hello, World!'
 
 @app.route('/api/like_post',methods = ['POST'])
-def like():
-    post_id = request.get_json('id')
-    db.posts.update_one({'_id':post_id},{ '$inc': { 'numberOfLikes': 1} })
+def like_post():
+    post_id = request.get_json().get('id')
+    db.posts.update_one({'_id':ObjectId(post_id)},{ '$inc': { 'numberOfLikes': 1} })
     return 'likes_number increased'
 
 @app.route('/api/unlike_post',methods = ['POST'])
-def unlike():
-    post_id = request.get_json('id')
-    db.posts.update_one({'_id':post_id},{ '$inc': { 'numberOfLikes': -1} })
+def unlike_post():
+    post_id = request.get_json().get('id')
+    db.posts.update_one({'_id':ObjectId(post_id)},{ '$inc': { 'numberOfLikes': -1} })
     return 'likes_number decreased'
 
-#@app.route('/api/like_post',methods = ['POST'])
-#def like():
-#    post_id = request.get_json('id')
-#    db.posts.
-#    return likes_number
+@app.route('/api/like_comment',methods = ['POST'])
+def like_comment():
+    comment_infos = request.get_json()
+    comment_id = comment_infos.get('comment_id')
+    post_id = comment_infos.get('post_id')
+    db.posts.update_one(
+                {'_id':ObjectId(post_id)},
+                { '$inc': { "comments.$[n].numberOfLikes": 1 } },
+                { 'arrayFilters': [{ "n._id": ObjectId(comment_id) }] }
+            )
+    #db.posts.update_one({'_id':post_id},{ '$inc': { 'numberOfLikes': 1} })
+    return 'likes_number'
 
-#@app.route('/api/unlike_post',methods = ['POST'])
-#def unlike():
-#    post_id = request.get_json('id')
-#
-#    return likes_number
+@app.route('/api/unlike_comment',methods = ['POST'])
+def unlike_comment():
+    comment_infos = request.get_json()
+    comment_id = comment_infos.get('comment_id')
+    post_id = comment_infos.get('post_id')
+    db.posts.update_one(
+                {'_id':ObjectId(post_id)},
+                { '$inc': { "comments.$[n].numberOfLikes": 1 } },
+                { 'arrayFilters': [{ "n._id": ObjectId(comment_id) }] }
+            )
+
+    return 'likes_number'
+
+@app.route('/api/top_topics',methods = ['GET'])
+def get_top_topics():
+    top_topics = db.posts.aggregate([
+    {"$unwind" : "$etiquettes"},
+    {"$sortByCount" : "$etiquettes"},
+    {"$limit" : 3}
+    ]).pretty()
+    return json.loads(json_util.dumps(top_topics))
+
 
 @app.route('/api/test',methods = ['GET'])
 def test():
-    post_id = request.get_json('id')
+    post_id = request.get_json().get('id')
 
-    return db.posts.find_one({"_id":post_id})
+    return db.posts.find_one({"_id":ObjectId(post_id)})
 
 
 

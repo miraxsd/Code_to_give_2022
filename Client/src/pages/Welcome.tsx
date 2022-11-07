@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import React from 'react'
 import NavBar from '../components/NavBar/NavBar'
 import Modal from '../components/Modal/Modal'
 import '../pages/Welcome.scss'

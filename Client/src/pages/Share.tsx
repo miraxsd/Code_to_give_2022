@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react'
-import { FaArrowLeft, FaArrowRight, FaChevronDown, FaDownload } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaChevronDown } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Background from '../components/Background/Background'
 import Modal from '../components/Modal/Modal'
@@ -42,7 +42,6 @@ const Share = () => {
 
     const verify = (event: ChangeEvent) => {
 
-        console.log((event.target as HTMLTextAreaElement).value);
         if((event.target as HTMLTextAreaElement).value !== '') {
             setCanShare(true);
         } else {
@@ -54,12 +53,30 @@ const Share = () => {
         const textarea = document.getElementById('form-textarea') as HTMLTextAreaElement;
         let newPost = {
             // a changer
-            location: position,
-            etiquettes: comboboxValue !== 'Select a theme...' ? comboboxValue : '',
-            text: textarea.value
+            location: [position?.lat, position?.lng],
+            etiquettes: [comboboxValue !== 'Select a theme...' ? comboboxValue : ''],
+            text: textarea.value,
+            user: 'Admin',
+            postType: step === 2 ? 'Challenge' : 'Idea'
         }
         console.log(newPost)
-        navigate('/', {replace: true})
+
+        await fetch(`/api/createpost`, {
+            method: 'POST',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                location: newPost.location,
+                etiquettes: newPost.etiquettes,
+                text: newPost.text,
+                user: newPost.user,
+                postType: newPost.postType
+            })
+
+          }).then(() =>{
+            navigate('/', {replace: true});
+          })
+
+
     }
 
     const typesForm = () => {
