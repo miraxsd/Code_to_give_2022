@@ -15,6 +15,9 @@ const NavBar = () => {
         <div className='logo-section' onClick={()=>navigate('/', {replace: true})}>
             <img src={logo} alt='' />
         </div>
+        <div className='page-options'>
+            <p onClick={() => navigate('/dashboard', {replace: true})}>My Dashboard</p>
+        </div>
         <div className='account-section' onClick={()=>setState(!accountClicked)}>
             <img src={user} alt='' />
             {

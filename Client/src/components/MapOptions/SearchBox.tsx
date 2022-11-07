@@ -10,7 +10,7 @@ import evenBus from '../../eventBus'
 import eventBus from '../../eventBus';
 
 interface SearchBoxProps {
-    panningFunction: ({lat, lng}: any) => void
+    panningFunction?: ({lat, lng}: any) => void
 }
 
 const SearchBox = ({panningFunction}: SearchBoxProps) => {
@@ -76,7 +76,7 @@ const SearchBox = ({panningFunction}: SearchBoxProps) => {
                         const res = await getGeocode({address: location});
                         const {lat, lng} = await getLatLng(res[0]);
                         handleSelect({lat, lng});
-                        panningFunction({lat, lng});
+                        panningFunction!?.({lat, lng});
                     } catch(error) {
                         console.log('Location input error');
                     }
