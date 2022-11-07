@@ -27,7 +27,7 @@ def get_posts():
         { 'location' : 
             { '$geoWithin' : 
                     {
-                        "centerSphere":[location,10]
+                        "$centerSphere":[location,100]
                     } 
             }
         }).sort('numberOflike',-1)
@@ -36,10 +36,11 @@ def get_posts():
             { 'location' : 
                 { '$geoWithin' : 
                     {
-                        "centerSphere":[location,10]
+                        "$centerSphere":[location,100]
                     } 
                 },
                 'etiquettes':{'$in':etiquettes}
+
             }).sort('numberOflike',-1)
 
     return json.loads(json_util.dumps(posts_found))
