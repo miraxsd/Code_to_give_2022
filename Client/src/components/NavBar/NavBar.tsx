@@ -25,6 +25,9 @@ const NavBar = () => {
                 accountClicked ? <BsChevronCompactUp size={30} color='black'/> : <BsChevronCompactDown size={30} color='black'/>
             }
         </div>
+        <div className='translate'>
+            <a href=''>FR</a>
+        </div>
     </div>
   )
 }
