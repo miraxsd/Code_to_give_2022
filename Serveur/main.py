@@ -26,28 +26,20 @@ def get_posts():
         posts_found = db.posts.find( 
         { 'location' : 
             { '$geoWithin' : 
-                { '$geometry' : 
                     {
-                    'type':"centerSphere", 
-                    'coordinates':[[location,10]]
-                    }
-                } 
+                        "centerSphere":[location,10]
+                    } 
             }
-
         }).sort('numberOflike',-1)
     else:
         posts_found = db.posts.find( 
             { 'location' : 
                 { '$geoWithin' : 
-                    { '$geometry' : 
-                        {
-                        'type':"centerSphere", 
-                        'coordinates':[location,10]
-                        }
+                    {
+                        "centerSphere":[location,10]
                     } 
                 },
                 'etiquettes':{'$in':etiquettes}
-
             }).sort('numberOflike',-1)
 
     return json.loads(json_util.dumps(posts_found))
