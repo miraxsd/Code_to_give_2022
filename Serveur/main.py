@@ -72,11 +72,11 @@ def create_post():
 def create_comment():
     # Peut contenir la longitude et l'altitude (0 sinon), une liste des étiquettes à chercher (une liste vide sinon) 
     comment_infos = request.get_json()
-    post_id = comment_infos.get_json('post_id')
+    post_id = comment_infos.get('post_id')
     comment_id = ObjectId()
-    comment_writer = comment_infos.get_json('name')
-    comment_text = comment_infos.get_json('text')
-    numberOfLikes =comment_infos.get_json('numberOfLikes')
+    comment_writer = comment_infos.get('name')
+    comment_text = comment_infos.get('text')
+    numberOfLikes =comment_infos.get('numberOfLikes')
 
     db.posts.update_many({'_id':ObjectId(post_id)}, 
         {
@@ -95,20 +95,21 @@ def create_comment():
 
 @app.route('/api/like_post',methods = ['POST'])
 def like_post():
-    post_id = request.get_json('id')
+    post_id = request.get_json().get('id')
     db.posts.update_one({'_id':ObjectId(post_id)},{ '$inc': { 'numberOfLikes': 1} })
     return 'likes_number increased'
 
 @app.route('/api/unlike_post',methods = ['POST'])
 def unlike_post():
-    post_id = request.get_json('id')
+    post_id = request.get_json().get('id')
     db.posts.update_one({'_id':ObjectId(post_id)},{ '$inc': { 'numberOfLikes': -1} })
     return 'likes_number decreased'
 
 @app.route('/api/like_comment',methods = ['POST'])
 def like_comment():
-    comment_id = request.get_json('comment_id')
-    post_id = request.get_json('post_id')
+    comment_infos = request.get_json()
+    comment_id = comment_infos.get('comment_id')
+    post_id = comment_infos.get('post_id')
     db.posts.update_one(
                 {'_id':ObjectId(post_id)},
                 { '$inc': { "comments.$[n].numberOfLikes": 1 } },
@@ -119,8 +120,9 @@ def like_comment():
 
 @app.route('/api/unlike_comment',methods = ['POST'])
 def unlike_comment():
-    comment_id = request.get_json('comment_id')
-    post_id = request.get_json('post_id')
+    comment_infos = request.get_json()
+    comment_id = comment_infos.get('comment_id')
+    post_id = comment_infos.get('post_id')
     db.posts.update_one(
                 {'_id':ObjectId(post_id)},
                 { '$inc': { "comments.$[n].numberOfLikes": 1 } },
@@ -141,7 +143,7 @@ def get_top_topics():
 
 @app.route('/api/test',methods = ['GET'])
 def test():
-    post_id = request.get_json('id')
+    post_id = request.get_json().get('id')
 
     return db.posts.find_one({"_id":ObjectId(post_id)})
 
