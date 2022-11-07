@@ -66,8 +66,8 @@
         }
 
         .types-challenge, .types-issue{
-            width: 489px;
-            height: 680px;
+            width: 28vw;
+            height: 60vh;
     
             background: #F1E8FF;
             box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -93,8 +93,8 @@
             }
 
             img{
-                width: 354px;
-                height: 366px;
+                width: 15vw;
+                height: 24vh;
             }
 
             .types-button{
@@ -203,7 +203,8 @@
         font-size: 50px;
         line-height: 68px;
         /* identical to box height */
-
+        margin-top: 2vh;
+        margin-bottom: 0;
         text-align: center;
     }
 
@@ -212,7 +213,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: space-evenly;
+        justify-content: flex-start;
         align-self: center;
         width: 40%;
 

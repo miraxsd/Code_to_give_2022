@@ -25,11 +25,11 @@
     align-items: center;
 
     .post-page-image{
-      position: absolute;
-      left: 2vw;
+      position: relative;
+      right: 30vw;
       //test
-      width: 10vw;
-      height: 20vh;
+      width: 220px;
+      height: 200px;
     }
 
     .close-button{
@@ -48,9 +48,8 @@
     }
 
     .tags-section{
-      position: absolute;
-      left: 2vw;
-      top: 22vh;
+      position: relative;
+      right: 30vw;
 
       .theme-tag{
         margin-top: 1%;
@@ -72,7 +71,7 @@
       height: 30vh;
       display: flex;
       flex-direction: column;
-      margin-top: 6vh;
+      margin-top: 9vh;
       z-index: 99999;
       overflow-y: auto;
       overflow-x: hidden;

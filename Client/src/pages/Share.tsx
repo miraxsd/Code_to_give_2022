@@ -157,7 +157,7 @@ const Share = () => {
                 <div className='map-background'>
                     <img className='map-img' src={map} alt='' />
                 </div>
-                <Modal overlay={true} width='1416px' height='888px'>
+                <Modal overlay={true} width='80vw' height='80vh'>
                     <div>
                         {
                             step === 1 ? typesForm() : null

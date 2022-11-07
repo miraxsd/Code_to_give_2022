@@ -108,7 +108,7 @@ const Dashboard = () => {
             <div className='map-background'>
               <img className='map-img' src={map} alt='' />
             </div>
-            <Modal overlay={false} width='1400px' height='888px'>
+            <Modal overlay={false} width='80vw' height='80vh'>
               <div className='dashboard-modal'>
                 <div className='modal-header'>
                   <h1>Search a post</h1>

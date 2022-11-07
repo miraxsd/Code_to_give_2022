@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e8c742bc-005f-4fe7-bb0c-23dac7ba62bb" name="Changes" comment="" />
+    <list default="true" id="e8c742bc-005f-4fe7-bb0c-23dac7ba62bb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Client/src/components/MapOptions/SearchBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/MapOptions/SearchBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/pages/Dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/Dashboard.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/pages/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/pages/PostPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/PostPage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/pages/Share.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/Share.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/pages/Share.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/Share.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Serveur.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Serveur.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +35,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2HCDnERHJPZoQHwbDqVWhWvVih0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -34,10 +45,33 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/fedwi/Documents/2022 Log session 5/Morgan Stanley/Code To Give/Code_to_give_2022/Serveur&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.Serveur">
+    <configuration name="Serveur" type="PythonConfigurationType" factoryName="Python">
+      <module name="Serveur" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Serveur" type="Python.FlaskServer">
       <module name="Serveur" />
       <option name="target" value="$PROJECT_DIR$/main.py" />
@@ -63,6 +97,7 @@
       <option name="presentableId" value="Default" />
       <updated>1667780341634</updated>
       <workItem from="1667780343762" duration="13979000" />
+      <workItem from="1667848529633" duration="747000" />
     </task>
     <servers />
   </component>

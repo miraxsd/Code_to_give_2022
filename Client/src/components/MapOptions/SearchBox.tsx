@@ -85,7 +85,7 @@ const SearchBox = ({panningFunction}: SearchBoxProps) => {
             >
                 <ComboboxInput className='search-input' value={value} onChange={(event) => {setValue(event.target.value)}} disabled={!ready} placeholder='Search by city, country or theme'/>
                 <ComboboxPopover style={{fontSize: 'large'}}>
-                    <ComboboxList  style={{width: '100%', maxHeight: '200px',display:'flex', flexDirection:'column' ,justifyContent:'space-evenly', backgroundColor: 'rgba(217, 217, 217, 0.4)'}}>
+                    <ComboboxList  style={{width: '100%',display:'flex', flexDirection:'column' ,justifyContent:'space-evenly', backgroundColor: 'rgba(217, 217, 217, 0.4)'}}>
                         {status === 'OK' && data.map(({place_id, description}) => (<ComboboxOption key={place_id} value={description} />))}
                     </ComboboxList>
                 </ComboboxPopover>

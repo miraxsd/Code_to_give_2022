@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cab87593-909f-4c83-93db-d40868a1104e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Client/src/components/MapOptions/SearchBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/MapOptions/SearchBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/pages/Dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/pages/Dashboard.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/pages/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/pages/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/pages/PostPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/pages/PostPage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/pages/Share.scss" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/pages/Share.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/pages/Share.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/pages/Share.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2HERwB5DXvarUAhqe5xwdohBqyH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/fedwi/Documents/2022 Log session 5/Morgan Stanley/Code To Give/Code_to_give_2022",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cab87593-909f-4c83-93db-d40868a1104e" name="Changes" comment="" />
+      <created>1667848494697</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667848494697</updated>
+      <workItem from="1667848496381" duration="20000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
