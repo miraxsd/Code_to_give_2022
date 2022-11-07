@@ -21,8 +21,22 @@ def get_posts():
     location = requested_posts_spec.get('location')
     etiquettes = requested_posts_spec.get('etiquettes')
     # get posts from DB
-    posts = db.posts.find({'location':location,'etiquettes':etiquettes})
-    return json.loads(json_util.dumps(posts))
+    #posts_found = db.posts.find({'location': {"$gt": location[0]},'etiquettes':etiquettes})
+    posts_found = db.posts.find( 
+        { 'location' : 
+            { '$geoWithin' : 
+                { '$geometry' : 
+                    {
+                    'type':"centerSphere", 
+                    'coordinates':[[location,10]]
+                    }
+                } 
+            },
+            'etiquettes':{'$in':etiquettes}
+
+        }).sort({'numberOflike':-1})
+        
+    return json.loads(json_util.dumps(posts_found))
 
 @app.route('/api/post/<string:id>',methods = ['GET'])
 def get_post(id):
