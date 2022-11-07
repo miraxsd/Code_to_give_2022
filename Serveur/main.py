@@ -22,7 +22,8 @@ def get_posts():
     etiquettes = requested_posts_spec.get('etiquettes')
     # get posts from DB
     #posts_found = db.posts.find({'location': {"$gt": location[0]},'etiquettes':etiquettes})
-    posts_found = db.posts.find( 
+    if etiquettes == []:
+        posts_found = db.posts.find( 
         { 'location' : 
             { '$geoWithin' : 
                 { '$geometry' : 
@@ -31,11 +32,24 @@ def get_posts():
                     'coordinates':[[location,10]]
                     }
                 } 
-            },
-            'etiquettes':{'$in':etiquettes}
+            }
 
         }).sort({'numberOflike':-1})
-        
+    else:
+        posts_found = db.posts.find( 
+            { 'location' : 
+                { '$geoWithin' : 
+                    { '$geometry' : 
+                        {
+                        'type':"centerSphere", 
+                        'coordinates':[[location,10]]
+                        }
+                    } 
+                },
+                'etiquettes':{'$in':etiquettes}
+
+            }).sort({'numberOflike':-1})
+
     return json.loads(json_util.dumps(posts_found))
 
 @app.route('/api/post/<string:id>',methods = ['GET'])
@@ -66,6 +80,7 @@ def create_comment():
     # Peut contenir la longitude et l'altitude (0 sinon), une liste des étiquettes à chercher (une liste vide sinon) 
     comment_infos = request.get_json()
     post_id = comment_infos.get_json('post_id')
+    comment_id = ObjectId()
     comment_writer = comment_infos.get_json('name')
     comment_text = comment_infos.get_json('text')
     numberOfLikes =comment_infos.get_json('numberOfLikes')
@@ -74,6 +89,7 @@ def create_comment():
         {
             '$push':{
                 'comments': {
+                    '_id': comment_id,
                     'user': comment_writer,
                     'comment': comment_text,
                     'numberOfLikes': numberOfLikes
