@@ -33,7 +33,7 @@ const PostItem = ({details}: FullPostProps) => {
                 <p>{details.description}</p>
             </div>
             <div className='post-actions'>
-                <button className='action' onClick={async ()=>handleClick()}>  <AiOutlineHeart size={30}/> {details.numberOfLikes}</button>
+                <button className='action' onClick={async ()=>handleClick()}>  <AiOutlineHeart size={20}/> {details.numberOfLikes}</button>
             </div>
           </div>
       </div>

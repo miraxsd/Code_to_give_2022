@@ -95,7 +95,7 @@ const PostPage = () => {
             <div className='map-background'>
               <img className='map-img' src={map} alt='' />
             </div>
-            <Modal overlay={false} width='1400px' height='1104px'>
+            <Modal overlay={false} width='80vw' height='80vh'>
               <div className='post-page-modal'>
                 <div className='top-section'>
                   <img className='post-page-image' src={details.postType === 'challenge' ? challenge : details.postType === 'idea'? idea : ''} alt='' />

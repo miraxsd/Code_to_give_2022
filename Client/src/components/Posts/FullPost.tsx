@@ -59,11 +59,11 @@ const FullPost = ({details}: FullPostProps) => {
                 </div>
                 <div className='post-actions'>
                    <div className='action'>
-                        <button className='post-like' onClick={()=>handleClick()}><AiOutlineHeart size={30}/></button>
+                        <button className='post-like' onClick={()=>handleClick()}><AiOutlineHeart size={20}/></button>
                         <p className='likes-number'>{details.numberOfLikes}</p>
                     </div>
                     <div className='action' onClick={() => setShowReply(true)}>
-                        <button className='post-comment' ><BiMessage  size={30}/></button>
+                        <button className='post-comment' ><BiMessage  size={20}/></button>
                         <p className='post-reply'>Reply</p>
                     </div>
                 </div>

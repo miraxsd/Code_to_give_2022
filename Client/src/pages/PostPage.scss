@@ -25,11 +25,11 @@
     align-items: center;
 
     .post-page-image{
-      position: relative;
-      right: 20vw;
+      position: absolute;
+      left: 2vw;
       //test
-      width: 220px;
-      height: 200px;
+      width: 10vw;
+      height: 20vh;
     }
 
     .close-button{
@@ -48,8 +48,9 @@
     }
 
     .tags-section{
-      position: relative;
-      right: 20vw;
+      position: absolute;
+      left: 2vw;
+      top: 22vh;
 
       .theme-tag{
         margin-top: 1%;
@@ -67,11 +68,11 @@
     }
 
     .comments-section {
-      width: 500px;
-      max-height: 600px;
+      width: 28vw;
+      height: 30vh;
       display: flex;
       flex-direction: column;
-      margin-top: 180px;
+      margin-top: 6vh;
       z-index: 99999;
       overflow-y: auto;
       overflow-x: hidden;
