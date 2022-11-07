@@ -34,7 +34,7 @@ def get_posts():
                 } 
             }
 
-        }).sort({'numberOflike':-1})
+        }).sort({'numberOflike',-1})
     else:
         posts_found = db.posts.find( 
             { 'location' : 
@@ -48,7 +48,7 @@ def get_posts():
                 },
                 'etiquettes':{'$in':etiquettes}
 
-            }).sort({'numberOflike':-1})
+            }).sort({'numberOflike',-1})
 
     return json.loads(json_util.dumps(posts_found))
 
