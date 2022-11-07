@@ -57,7 +57,7 @@ const Share = () => {
             etiquettes: [comboboxValue !== 'Select a theme...' ? comboboxValue : ''],
             text: textarea.value,
             user: 'Admin',
-            postType: step === 2 ? 'Challenge' : 'Idea'
+            postType: step === 2 ? 'challenge' : 'idea'
         }
         console.log(newPost)
 
