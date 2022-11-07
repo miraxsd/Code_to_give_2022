@@ -78,11 +78,11 @@ def create_comment():
     comment_text = comment_infos.get_json('text')
     numberOfLikes =comment_infos.get_json('numberOfLikes')
 
-    db.posts.update_many({'_id':post_id}, 
+    db.posts.update_many({'_id':ObjectId(post_id)}, 
         {
             '$push':{
                 'comments': {
-                    '_id': comment_id,
+                    '_id': ObjectId(comment_id),
                     'user': comment_writer,
                     'comment': comment_text,
                     'numberOfLikes': numberOfLikes
@@ -94,34 +94,46 @@ def create_comment():
     return 'Hello, World!'
 
 @app.route('/api/like_post',methods = ['POST'])
-def like():
+def like_post():
     post_id = request.get_json('id')
-    db.posts.update_one({'_id':post_id},{ '$inc': { 'numberOfLikes': 1} })
+    db.posts.update_one({'_id':ObjectId(post_id)},{ '$inc': { 'numberOfLikes': 1} })
     return 'likes_number increased'
 
 @app.route('/api/unlike_post',methods = ['POST'])
-def unlike():
+def unlike_post():
     post_id = request.get_json('id')
-    db.posts.update_one({'_id':post_id},{ '$inc': { 'numberOfLikes': -1} })
+    db.posts.update_one({'_id':ObjectId(post_id)},{ '$inc': { 'numberOfLikes': -1} })
     return 'likes_number decreased'
 
-#@app.route('/api/like_post',methods = ['POST'])
-#def like():
-#    post_id = request.get_json('id')
-#    db.posts.
-#    return likes_number
+@app.route('/api/like_comment',methods = ['POST'])
+def like_comment():
+    comment_id = request.get_json('comment_id')
+    post_id = request.get_json('post_id')
+    db.posts.update_one(
+                {'_id':ObjectId(post_id)},
+                { '$inc': { "comments.$[n].numberOfLikes": 1 } },
+                { 'arrayFilters': [{ "n._id": ObjectId(comment_id) }] }
+            )
+    #db.posts.update_one({'_id':post_id},{ '$inc': { 'numberOfLikes': 1} })
+    return 'likes_number'
 
-#@app.route('/api/unlike_post',methods = ['POST'])
-#def unlike():
-#    post_id = request.get_json('id')
-#
-#    return likes_number
+@app.route('/api/unlike_comment',methods = ['POST'])
+def unlike_comment():
+    comment_id = request.get_json('comment_id')
+    post_id = request.get_json('post_id')
+    db.posts.update_one(
+                {'_id':ObjectId(post_id)},
+                { '$inc': { "comments.$[n].numberOfLikes": 1 } },
+                { 'arrayFilters': [{ "n._id": ObjectId(comment_id) }] }
+            )
+
+    return 'likes_number'
 
 @app.route('/api/test',methods = ['GET'])
 def test():
     post_id = request.get_json('id')
 
-    return db.posts.find_one({"_id":post_id})
+    return db.posts.find_one({"_id":ObjectId(post_id)})
 
 
 
