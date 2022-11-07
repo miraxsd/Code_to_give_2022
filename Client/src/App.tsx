@@ -47,7 +47,7 @@ function App() {
             <Map mapLoad={onMapLoad} mapRef={mapReference}/>
             <SearchBox panningFunction={panTo} />
             <Locate panningFunction={panTo} />
-            <TopPosts />
+            <TopPosts mapRef={mapReference} />
             <button className='create-new-post' onClick={() => navigate('/share', {replace: true})}> <MdOutlinePostAdd size={40} color='white'/></button>
           </section>
         </Background>

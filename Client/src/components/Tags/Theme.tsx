@@ -4,7 +4,7 @@ import '../Tags/Theme.scss'
 
 interface ThemeProps {
     name: string,
-    icon: ReactElement<IconBaseProps>,
+    icon?: ReactElement<IconBaseProps>,
     color?: string
 }
 const Theme = ({name, icon, color}:ThemeProps) => {
