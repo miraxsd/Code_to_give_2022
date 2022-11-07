@@ -15,8 +15,8 @@
     font-size: large;
 
     .search-input-section{
-        width: 344px;
-        height: 56px;
+        width: 24vw;
+        height: 10vh;
         background: rgba(217, 217, 217, 0.4);
         border: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 8px;
@@ -45,7 +45,7 @@
     }
 
     .search-themes-section{
-        width: 344px;
+        width: 24vw;
         height: fit-content;
         display: flex;
         flex-direction: column;
