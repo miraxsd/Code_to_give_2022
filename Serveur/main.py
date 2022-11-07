@@ -66,7 +66,7 @@ def create_post():
     post = {'user':user,'location':location,'etiquettes':total_etiquettes,'postType':postType,'comments':[],'numberOfLikes':0,'text':text}
 
     db.posts.insert_one(post)
-    return 'post added'
+    return jsonify('post added')
 
 @app.route('/api/create_comment',methods = ['POST'])
 def create_comment():

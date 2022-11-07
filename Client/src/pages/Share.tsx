@@ -66,11 +66,16 @@ const Share = () => {
         //     navigate('/', {replace: true})
         // })
 
-        await fetch(`${process.env.REACT_APP_SERVER_URL}/createpost`, {
+        await fetch(`/api/createpost`, {
             method: 'POST',
-            mode: 'no-cors',
             headers: {'Content-type': 'application/json'},
-            body: JSON.stringify(newPost)
+            body: JSON.stringify({
+                location: newPost.location,
+                etiquettes: newPost.etiquettes,
+                text: newPost.text,
+                user: newPost.user,
+                postType: newPost.postType
+            })
 
           }).then(() =>{
             navigate('/', {replace: true});
