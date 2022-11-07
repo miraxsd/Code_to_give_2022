@@ -22,7 +22,7 @@ def get_posts():
     etiquettes = requested_posts_spec.get('etiquettes')
     # get posts from DB
     #posts_found = db.posts.find({'location': {"$gt": location[0]},'etiquettes':etiquettes})
-    if etiquettes == []:
+    if etiquettes == [] or type(etiquettes) != list :
         posts_found = db.posts.find( 
         { 'location' : 
             { '$geoWithin' : 
