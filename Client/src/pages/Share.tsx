@@ -1,12 +1,10 @@
 import React, { ChangeEvent, useState } from 'react'
-import { FaArrowLeft, FaArrowRight, FaChevronDown, FaDownload } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaChevronDown } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Background from '../components/Background/Background'
 import Modal from '../components/Modal/Modal'
 import NavBar from '../components/NavBar/NavBar'
 import '../pages/Share.scss'
-import Combobox from 'react-widgets/Combobox';
-import { validateHeaderName } from 'http';
 
 let map = require('../assets/map-background.jpg');
 let challenge = require('../assets/goal.png');
@@ -44,7 +42,6 @@ const Share = () => {
 
     const verify = (event: ChangeEvent) => {
 
-        console.log((event.target as HTMLTextAreaElement).value);
         if((event.target as HTMLTextAreaElement).value !== '') {
             setCanShare(true);
         } else {
@@ -56,12 +53,30 @@ const Share = () => {
         const textarea = document.getElementById('form-textarea') as HTMLTextAreaElement;
         let newPost = {
             // a changer
-            location: position,
-            etiquettes: comboboxValue !== 'Select a theme...' ? comboboxValue : '',
-            text: textarea.value
+            location: [position?.lat, position?.lng],
+            etiquettes: [comboboxValue !== 'Select a theme...' ? comboboxValue : ''],
+            text: textarea.value,
+            user: 'Admin',
+            postType: step === 2 ? 'Challenge' : 'Idea'
         }
         console.log(newPost)
-        navigate('/', {replace: true})
+
+        await fetch(`/api/createpost`, {
+            method: 'POST',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                location: newPost.location,
+                etiquettes: newPost.etiquettes,
+                text: newPost.text,
+                user: newPost.user,
+                postType: newPost.postType
+            })
+
+          }).then(() =>{
+            navigate('/', {replace: true});
+          })
+
+
     }
 
     const typesForm = () => {
@@ -133,29 +148,29 @@ const Share = () => {
 
   return (
     <div className='App welcome-page'>
-    <header className="App-header">
-      <NavBar />
-    </header>
-    <div className='app-body'>
-      <Background >
-        <section>
-          <div className='map-background'>
-            <img className='map-img' src={map} alt='' />
-          </div>
-          <Modal overlay={true} width='1416px' height='888px'>
-            <div>
-                {
-                    step === 1 ? typesForm() : null
-                }
-                {
-                    step === 2 || step === 3 ? contentForm() : null
-                }
-            </div>
-          </Modal>
-        </section>
-      </Background>
+        <header className="App-header">
+        <NavBar />
+        </header>
+        <div className='app-body'>
+            <Background >
+                <section>
+                <div className='map-background'>
+                    <img className='map-img' src={map} alt='' />
+                </div>
+                <Modal overlay={true} width='1416px' height='888px'>
+                    <div>
+                        {
+                            step === 1 ? typesForm() : null
+                        }
+                        {
+                            step === 2 || step === 3 ? contentForm() : null
+                        }
+                    </div>
+                </Modal>
+                </section>
+            </Background>
+        </div>
     </div>
-  </div>
   )
 }
 

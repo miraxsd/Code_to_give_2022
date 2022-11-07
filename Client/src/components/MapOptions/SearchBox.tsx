@@ -6,6 +6,8 @@ import { BsBook } from 'react-icons/bs';
 import usePlacesAutocomplete, {getGeocode, getLatLng} from 'use-places-autocomplete';
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from '@reach/combobox';
 import "@reach/combobox/styles.css"
+import evenBus from '../../eventBus'
+import eventBus from '../../eventBus';
 
 interface SearchBoxProps {
     panningFunction?: ({lat, lng}: any) => void
@@ -52,6 +54,10 @@ const SearchBox = ({panningFunction}: SearchBoxProps) => {
         }]);
     }
 
+    const handleSelect = (location: any) => {
+        eventBus.dispatch('newLocation', location);
+    }
+
     useEffect(()=>{
         if(value) {
          search(value);
@@ -61,7 +67,7 @@ const SearchBox = ({panningFunction}: SearchBoxProps) => {
 
   return (
     <div className='search-box'>
-        <div className='search-input-section' onSelect={(location) => console.log(location)}>
+        <div className='search-input-section'>
             <Combobox 
                 onSelect={async (location) => {
                     setValue(location, false);
@@ -69,7 +75,8 @@ const SearchBox = ({panningFunction}: SearchBoxProps) => {
                     try {
                         const res = await getGeocode({address: location});
                         const {lat, lng} = await getLatLng(res[0]);
-                        panningFunction?.({lat, lng});
+                        handleSelect({lat, lng});
+                        panningFunction({lat, lng});
                     } catch(error) {
                         console.log('Location input error');
                     }
