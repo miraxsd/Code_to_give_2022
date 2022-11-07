@@ -25,7 +25,7 @@ root.render(
       <Route path='/welcome' element={<Welcome/>}/>
       <Route path='/share' element={<Share/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
-      <Route path='/postpage' element={<PostPage/>}/>
+      <Route path='/postpage/:id' element={<PostPage/>}/>
     
     </Routes>
   </BrowserRouter>

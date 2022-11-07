@@ -97,17 +97,6 @@
         grid-row: 4 / 5;
         margin: 5px;
     }
-
-    button.post-like {
-        border-style: none;
-        background-color: white;
-        font-size: 1.2em;
-    }
-
-    button.post-like :hover {
-        background-color: rgb(236, 139, 139);
-        cursor: pointer;
-    }
     
     .likes-number {
         grid-column: 2 / 3;

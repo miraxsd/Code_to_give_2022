@@ -1,49 +1,30 @@
 import React from 'react'
-import '../MapOptions/TopPosts.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons'
-import { Link } from "react-router-dom";
-import posts from './Posts'
+import '../MapOptions/PostItem.scss'
+import { AiOutlineHeart } from 'react-icons/ai';
 
-let user = require('../../assets/user.png');
-let row = 5;
-let cols = 60; 
 
-const PostItem = () => {
+interface FullPostProps{
+  details: any,
+}
+const PostItem = ({details}: FullPostProps) => {
     return (
-      <div>
-        <div className='posts-list'>
-          <Link className='post-title' to={"/postpage"}>{posts[0].title}</Link>
-          <p className='post-type'>{posts[0].postType}</p>
-          <p className='post-author'>{posts[0].user}</p>
-          <img className='profile-picture' src={user} alt='profile pic'></img>
-          <p className='post-date'>{posts[0].date}</p>
-          <p className='post-description'>{posts[0].description}</p>
-          <form className='likeForm' method='post' action="">
-            <button  className='post-like' type='submit'><FontAwesomeIcon icon={faHeart} /></button>
-          </form>
-          <p className='likes-number'>{posts[0].numberOfLikes}</p>
-          <button className='post-comment' onClick={openCommentBox}><FontAwesomeIcon icon={faComment} /></button>
-          <p className='post-reply'>Reply</p>
-        </div>
-          <form id="form1" className='commentForm' display="none" action="" method='post'>
-            <textarea defaultValue="Write a comment" rows={row}  cols={cols}></textarea>
-            <br></br>
-            <button type='button' onClick={closeCommentBox} className='cancelButton'>Cancel</button>
-            <input className='SubmitButton' type="submit" value="Post"></input>
-          </form>
+      <div className='post-container'>
+        <div className='main-post'>
+            <p className='post-author'>{details.user}</p>
+            <div className='post-description'>
+                <p>{details.description}</p>
+            </div>
+            <div className='post-actions'>
+                <div className='action'>
+                    <button className='post-like' type='submit'><AiOutlineHeart size={30}/></button>
+                    <p className='likes-number'>{details.numberOfLikes}</p>
+                </div>
+            </div>
+          </div>
       </div>
     )
 }
 
-
-function openCommentBox() {
-  document.getElementById("form1").style.display = "block";
-}
-
-function closeCommentBox() {
-  document.getElementById("form1").style.display = "none";
-}
 
 
 export default PostItem

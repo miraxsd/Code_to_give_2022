@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../Posts/FullPost.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BiMessage } from 'react-icons/bi';
 import { AiOutlineHeart } from 'react-icons/ai';
 
