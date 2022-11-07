@@ -11,7 +11,24 @@ const FullPost = ({details}: FullPostProps) => {
 
     const [showReply, setShowReply] = useState(false);
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+
+        const text = document.getElementById('new-comment') as HTMLTextAreaElement;
+
+        await fetch(`/api/create_comment`, {
+            method: 'POST',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                text: text.value,
+                name: 'Admin',
+                numberOfLikes: 0,
+                post_id:  details.id,
+            })
+
+          }).then(() =>{
+            //window.location.reload();
+          })
+
         console.log('submiting')
     }
 
@@ -53,8 +70,8 @@ const FullPost = ({details}: FullPostProps) => {
             </div>
             {
                 showReply ?
-                    <form id="form1" className='commentForm' action="" method='post'>
-                    <textarea defaultValue="Write a comment" maxLength={512}></textarea>
+                    <form id="form1" style={{zIndex: '99999999'}} className='commentForm' action="">
+                    <textarea id='new-comment' defaultValue="Write a comment" maxLength={512}></textarea>
                     <br></br>
                     <div className='submit-options'>
                         <button type='button' onClick={() => setShowReply(false)} className='cancelButton'>Cancel</button>

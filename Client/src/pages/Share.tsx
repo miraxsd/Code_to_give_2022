@@ -56,11 +56,11 @@ const Share = () => {
             location: [position?.lat, position?.lng],
             etiquettes: [comboboxValue !== 'Select a theme...' ? comboboxValue : ''],
             text: textarea.value,
-            user: '',
+            user: 'Admin',
             postType: step === 2 ? 'Challenge' : 'Idea'
         }
         console.log(newPost)
-        
+
         await fetch(`/api/createpost`, {
             method: 'POST',
             headers: {'Content-type': 'application/json'},

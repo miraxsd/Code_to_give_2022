@@ -3,6 +3,8 @@ import '../Background/Map.scss'
 import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api'
 import { filter } from './MapStyle';
 import axios from 'axios';
+import FullPost from '../Posts/FullPost';
+import PostItem from '../MapOptions/PostItem';
 
 
 const style = {with: "100vw", height: '90vh'};
@@ -93,8 +95,18 @@ const Map = ({mapLoad, mapRef}: MapProps) => {
     const getInfos = async (post: any) => {
         let id = post.id; 
 
-        await axios.get(`${process.env.REACT_APP_SERVER_URL}/post/${id}`).then((posts: any) => {
-            setSelectedPost(post)
+        await axios.get(`api/post/${id}`).then((posts: any) => {
+            console.log(posts.data)
+            setSelectedPost({
+                id: posts.data._id.$oid,
+                user:  posts.data.user,
+                location: posts.data.location,
+                postType: posts.data.postType,
+                etiquettes: posts.data.etiquettes,
+                description : posts.data.text,
+                numberOfLikes: posts.data.numberOfLikes,
+                comments: posts.data.comments
+            })
         }).catch(()=>{
             console.log(post)
 
@@ -137,7 +149,26 @@ const Map = ({mapLoad, mapRef}: MapProps) => {
                         onLoad={(infoWindow)=>{infoWindow.focus()}}
                     >
                         <div className='post-temp'>
-                            this is a post
+                            <FullPost details={selectedPost} />
+                            <div className='post-comments-section'>
+                                {
+                                    selectedPost.comments.map((comment: any, index:any) => {
+
+                                        let detail = {
+                                        description: comment.comment,
+                                        user: comment.user,
+                                        numberOfLikes: comment.numberOfLikes,
+                                        id: comment._id
+                                        }
+
+                                    return (
+                                        <div>
+                                            <PostItem key={index} details={detail} />
+                                        </div>
+                                    )
+                                    })
+                                }
+                            </div>
                         </div>
                     </InfoWindow> 
                 : null

@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8c742bc-005f-4fe7-bb0c-23dac7ba62bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Client/src/components/MapOptions/PostItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/MapOptions/PostItem.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/components/MapOptions/PostItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/MapOptions/PostItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/components/MapOptions/SearchBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/MapOptions/SearchBox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/components/MapOptions/TopPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/MapOptions/TopPosts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/components/Background/Map.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/Background/Map.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/src/components/Posts/FullPost.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/Posts/FullPost.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/pages/PostPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/PostPage.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/src/pages/PostPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/PostPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/pages/Share.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/Share.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Serveur.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Serveur.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667780341634</updated>
-      <workItem from="1667780343762" duration="9067000" />
+      <workItem from="1667780343762" duration="10765000" />
     </task>
     <servers />
   </component>

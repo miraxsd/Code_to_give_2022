@@ -137,17 +137,6 @@ const PostPage = () => {
             </Modal>
           </section>
         </Background>
-        {/* <div className='post-component-container'>
-          <div className='post-container'>
-            <h1 className='post-user-header'>Bobby123</h1>
-            <img className='big-profile-pic' src={user} alt='profile pic'></img>
-            <p className='user-location'>Montréal, Québec</p>
-            
-            <div className='post-comments'>
-            </div>
-            <Link to={'/'}><FontAwesomeIcon icon={faHome} className='home-button'/></Link>
-          </div>
-        </div> */}
       </div>
     </div>
   )
