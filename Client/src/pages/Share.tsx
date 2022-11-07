@@ -69,7 +69,8 @@ const Share = () => {
                 etiquettes: newPost.etiquettes,
                 text: newPost.text,
                 user: newPost.user,
-                postType: newPost.postType
+                postType: newPost.postType,
+                numerOfLikes: 0,
             })
 
           }).then(() =>{
