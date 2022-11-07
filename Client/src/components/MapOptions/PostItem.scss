@@ -1,6 +1,6 @@
 .post-container{
     height: inherit;
-    width: 456px;
+    width: 356px;
     border: none;
     display: flex;
     flex-direction: column;
@@ -17,25 +17,27 @@
 
         .post-author{
             font-style: normal;
-            font-weight: 600;
-            font-size: 24px;
-            line-height: 33px;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 24px;
             display: flex;
             margin-left: 8px;
         }
 
         .post-description{
             width: inherit;
-            height: 120px;
+            height: 100px;
             background: #F1E8FF;
             box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.25);
             border-radius: 16px;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
 
             font-style: normal;
             font-weight: 400;
             font-size: 24px;
-            line-height: 33px;
+            line-height: 24px;
             text-align: left;
             padding: 8px;
 
@@ -44,7 +46,13 @@
             }
 
             p{
-                text-overflow: ellipsis;
+                display: -webkit-box;
+                width: 100%;
+                height: 98%;
+                margin: 0;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
             }
         }
 

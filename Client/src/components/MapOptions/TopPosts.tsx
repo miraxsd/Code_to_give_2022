@@ -76,6 +76,7 @@ const TopPosts = ({mapRef}:TopPostsProps) => {
   return (
     <div className='top-posts'>
      <h1>Top posts in this area</h1>
+      <div className='top-posts-list'>
       {
         details.map((detail, index) => {
           return(
@@ -83,6 +84,7 @@ const TopPosts = ({mapRef}:TopPostsProps) => {
           )
         })
       }
+      </div>
     </div>
     )
 }

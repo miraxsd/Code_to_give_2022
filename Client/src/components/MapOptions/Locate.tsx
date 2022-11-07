@@ -19,7 +19,7 @@ const Locate = ({panningFunction}: LocateProps) => {
         )
     }}>
         <button className='locate-button'>
-            <i><MdOutlineMyLocation color='black' size={60}/></i>
+            <i><MdOutlineMyLocation color='black' size={40}/></i>
         </button>
     </div>
   )

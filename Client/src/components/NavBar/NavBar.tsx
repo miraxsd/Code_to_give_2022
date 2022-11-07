@@ -22,7 +22,7 @@ const NavBar = () => {
         <div className='account-section' onClick={()=>setState(!accountClicked)}>
             <img src={user} alt='' />
             {
-                accountClicked ? <BsChevronCompactUp size={30} color='black'/> : <BsChevronCompactDown size={30} color='black'/>
+                accountClicked ? <BsChevronCompactUp size={20} color='black'/> : <BsChevronCompactDown size={20} color='black'/>
             }
         </div>
         <div className='translate'>
