@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../components/NavBar/NavBar'
 import FullPost from '../components/Posts/FullPost'
 import Background from '../components/Background/Background'
@@ -15,12 +15,35 @@ let map = require('../assets/map-background.jpg');
 const PostPage = () => {
 
   const [details, setDetails] = useState({
-    postType: 'idea',
-    user: '',
-    etiquettes: ['Friendship', 'School-life']
-  });
+    id: 0,
+    user:  "Bobby123",
+    location: [17.966958, -66.123551],
+    postType: "idea",
+    etiquettes: ['Friendship', 'School-life'],
+    title: "Hurricane hit my city",
+    description :
+    "Last month, a hurricane hit my city and destroyed everything. My family was lucky, and our house was not really damaged, but most of my friends’ houses are gone. The power just came back, but we still don’t have clean water and food is hard to find. I don’t know how to help my community.",
+    date: "4 days ago",
+    liked: false,
+    numberOfLikes: 110,
+    comments: [{
+        user: "juan908",
+        location: [17.934013, -76.456299],
+        comment:
+        "I was in this situation last year, so I know it’s really hard. You can help by sharing some of your clothes and utilities with your friends who lost everything. Even if it’s just a couple of shirts, it will help a lot.",
+        liked: false,
+        numberOfLikes: 40
+    }]
+})
+
 
   let navigate = useNavigate();
+
+
+  useEffect(() => {
+
+  }, []);
+
 
   return (
     <div className='App post-page'>
@@ -51,7 +74,7 @@ const PostPage = () => {
                     }
                   </div>
                 </div>
-                <FullPost/>
+                <FullPost details={details}/>
               </div>
             </Modal>
           </section>
